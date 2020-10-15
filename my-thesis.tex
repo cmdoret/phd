@@ -1,0 +1,114 @@
+% **************************************************
+% Document Class Definition
+% **************************************************
+\pdfobjcompresslevel 0
+\documentclass[%
+    paper=A4,               % paper size --> A4 is default in Germany
+    twoside=true,           % onesite or twoside printing
+    openright,              % doublepage cleaning ends up right side
+    parskip=full,           % spacing value / method for paragraphs
+    chapterprefix=true,     % prefix for chapter marks
+    11pt,                   % font size
+    headings=normal,        % size of headings
+    bibliography=totoc,     % include bib in toc
+    listof=totoc,           % include listof entries in toc
+    titlepage=on,           % own page for each title page
+    captions=tableabove,    % display table captions above the float env
+    draft=false,            % value for draft version
+    openany					% Avoid blank page after each new part, chapter, ...
+]{scrreprt}%
+
+
+% **************************************************
+% Setup thesis document in this file
+% **************************************************
+\input{my-thesis-setup}
+
+% **************************************************
+% Compute glossary index
+% **************************************************
+\input{FrontBackMatter/Glossary}
+\makeglossaries
+\glsdisablehyper 	% Disable hyper links with glossary entries
+
+% **************************************************
+% Document CONTENT
+% **************************************************
+\begin{document}
+
+% --------------------------
+% rename document parts
+% --------------------------
+
+
+% --------------------------
+% Front matter
+% --------------------------
+\pagenumbering{roman}			% roman page numbing (invisible for empty page style)
+\pagestyle{empty}				
+
+% \input{examples/titlepages}		% INCLUDE: all titlepages
+\include{FrontBackMatter/Titlepages}		% INCLUDE: all titlepages
+
+\pagestyle{plain}				% display just page numbers
+% \input{examples/abstract}		% INCLUDE: the abstracts (english and german)
+\include{FrontBackMatter/Abstract}		% INCLUDE: the abstracts (english and german)
+
+% \input{examples/acknowledgement} % INCLUDE: acknowledgement
+\include{FrontBackMatter/Acknowledgements} % INCLUDE: acknowledgement
+
+%
+\include{FrontBackMatter/Contents} % Contents, list of figures/tables/listings and acronyms
+
+% --------------------------
+% Body matter
+% --------------------------
+\pagenumbering{arabic}			% arabic page numbering
+% \setcounter{page}{1}			% set page counter
+\pagestyle{maincontentstyle} 	% fancy header and footer
+
+%------------------------------------------------
+
+\include{Parts/Part01}
+\cleardoublepage % Empty page before the start of the next part
+%
+%%------------------------------------------------
+%
+\include{Parts/Part02}
+\cleardoublepage % Empty page before the start of the next part
+%
+%%------------------------------------------------
+%
+\include{Parts/Part03}
+\cleardoublepage % Empty page before the start of the next part
+%
+%%------------------------------------------------
+%
+\include{Parts/Part04}
+\cleardoublepage % Empty page before the start of the next part
+%
+%%------------------------------------------------
+%
+\include{Parts/Part05}
+\cleardoublepage % Empty page before the start of the next part
+
+% --------------------------
+% Back matter
+% --------------------------
+\appendix
+
+\include{Parts/Appendix}
+
+\input{FrontBackMatter/Bibliography}
+
+ \include{FrontBackMatter/Publications} % Publications from the thesis page
+
+\include{FrontBackMatter/Colophon}
+%
+\include{FrontBackMatter/Declaration}
+%\mbox{}
+
+% **************************************************
+% End of Document CONTENT
+% **************************************************
+\end{document}

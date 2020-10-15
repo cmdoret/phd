@@ -1,0 +1,70 @@
+% !TEX root = ../my-thesis.tex
+%
+% % ------------------------------------  --> cover title page
+%\begin{titlepage}
+%	\pdfbookmark[0]{Couverture}{Cover}
+%	\flushright
+%	\hfill
+%	\vfill
+%	{\LARGE\thesisTitle \par}
+%	\rule[5pt]{\textwidth}{.4pt} \par
+%	{\Large\thesisName}
+%	\vfill
+%	\textit{\large\thesisDate} \\
+%	Version: \thesisVersion
+%\end{titlepage}
+%
+
+% ------------------------------------  --> main title page
+\begin{titlepage}
+	\thispagestyle{fancytitlepage}
+	\pdfbookmark[0]{Titre}{Titlepage}
+	\tgherosfont
+	\centering
+
+	{\Huge \thesisUniversity} \\[2mm]
+    {\Large \thesisUniversityDepartment} \\[2mm]
+	\includegraphics[width=8cm]{FrontBackMatter/gfx/UPMC_Sorbonne_Universites_Logo} \\[2mm]	
+	\textsf{\large \thesisUniversityGroup} \\
+    \textsf{\large \thesisUniversityInstitute} \\
+
+	\vfill
+	{\large \thesisSubject} \\[10mm]
+	{\LARGE \color{ctcolortitle}\textbf{\thesisTitle} \\[10mm]}
+	{\Large \thesisName} \\[5mm]
+    {\Large Directeur de thèse: \textbf{\thesisFirstSupervisor}}\\
+    {\Large Co encadrant de thèse: \textbf{\thesisSecondSupervisor}}\\
+    \vfill
+    
+    {\large Présentée et soutenue publiquement le \thesisDate }\\[5mm]
+    {\large Jury}\\
+	\begin{tabular}{>{\Large\bfseries}l>{\Large}l}
+		\thesisPresident~(PU) & Président\\
+        \thesisFirstReviewer~(DR) & Rapporteur\\
+        \thesisSecondReviewer~(MCU) & Rapporteur\\
+        \thesisFirstExaminer~(CR) & Examinateur\\
+        \thesisFirstSupervisor~(PR) & Examinateur\\
+        \thesisSecondSupervisor~(CR) & Examinateur\\
+	\end{tabular}
+\end{titlepage}
+
+
+% ------------------------------------  --> lower title back for single page layout
+\hfill
+\vfill
+{
+	\small
+	\textit{\thesisTitle} \\
+    \thesisName\ \textcopyright\ \thesisDate \\
+	\thesisSubject\\
+	Rapporteurs: \thesisFirstReviewer\ et \thesisSecondReviewer \\
+    Examinatrice: \thesisFirstExaminer\\\
+	Directeur de th\`ese: \thesisFirstSupervisor\\
+    Co-Directeur de th\`ese: \thesisSecondSupervisor \\[1.5em]
+	\textbf{\thesisUniversity} \\
+    \thesisUniversityDepartment \\[1.5em]
+    \textbf{\thesisUniversityGroup} \\
+	\thesisUniversityInstitute \\
+    \thesisUniversityStreetAddress \\
+	\thesisUniversityPostalCode\ \thesisUniversityCity~\thesisUniversityCityCedex
+}
