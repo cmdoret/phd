@@ -1,0 +1,27 @@
+\chapter{Conclusions} % Chapter title
+\label{ch:03-04} % For referencing the chapter elsewhere, use \autoref{ch:name} 
+
+% L'utilisation du PMF de Ramachandran peut etre considéré comme une solution envisageable pour améliorer la qualité de prédiction, 
+
+Les contraintes de distances évolutives et natives aboutissant à une faible convergence dans l'approche standard, deux potentiels statistiques ont été testés pendant la dynamique pour restreindre le champ de recherche conformationnel. Sur les deux potentiel, celui relatif aux statistiques des angles dièdres de la liaison peptidique s'est avéré être le plus efficace pour améliorer la qualité des prédictions. 
+
+Contraindre le système par des potentiels de forces moyennes n'est cependant pas suffisant pour se soustraire de l'apparition de conformation miroirs durant les calculs. La quantité variable d'information nécessaire au repliement en fonction de la nature de la protéine cible \citep{murzin_principles_1994} explique en grande partie la formation de ces conformations. Pour distinguer ces groupes de conformations, l'utilisation d'un algorithme de partitionnement strict s'est révélé être particulièrement efficace pour contraindre le protocole à ne sélectionner qu'une seule conformation. 
+
+Un obstacle persiste cependant suite à l'implémentation du partitionnement au niveau de la sélection des conformères. Pour la classe de repliement \textbeta~et dans une moindre mesure la classe \textalpha+\textbeta, classer les modèles avec la fonction hybride standard ne permet pas de distinguer avec certitude les conformations se rapprochant de la structure native. Ces erreurs de classement ont été en partie résolue en utilisant un potentiel plus complexe intégrant les forces attractives de van der Waals, un potentiel électrostatique et les deux termes de forces moyennes précisés en amont.
+
+
+\begin{todolist}
+\item Calcul d'une structure consensus de plusieurs méthodes ecs, exp en parallèle d'une manière similaire à cyana => \citep{Buchner2015}
+\item comparaison traitement données RMN/ecs 
+\item Potentiels statistiques pdt MD et scoring => cf docear pour la discussion 
+
+\item Validation des structures => \citep{Montelione2013} => cf docear pour disccusion
+\end{todolist}
+La nécessité d'appliquer un algorithme de partitionnement à chaque itération n'est cependant pas nécessairement l'approche la plus robuste notamment pour de futurs tests à plus grande échelle. L'existence d'itérations où les deux groupes ont un degré de similarité identique par rapport à la structure de référence suggèrent la convergence vers une seule conformation. Utiliser une méthode de regroupement est dans ces situations inadapté. Activer l'étape uniquement lorsque l'ensemble de structures est au dessus d'un seuil de précision est à envisager. Une autre alternative est de passer par des méthodes non paramétriques par rapport au nombre de groupes ou d'implémenter des partitionnements plus probabilistes (les conformations pouvant alors appartenir à plus d'un groupe) pour orienter le choix des modèles selon leur appartenance à un ou plusieurs groupes. 
+
+Un second risque 
+% Pb clustering et convergence vers une seule structure lorsqu'il existe plusieurs conf
+% Pb deja souligné dans le chapitre précédent donc on met juste en valeur le risque avec le clustering
+%L'implémentation actuelle ne cherche qu'une seule conformation ce qui peut être particulièrement bien adapté au problème de prédire des structures à partir de contact provenant d'une structure déjà existante. Cependant le problème est plus complexe dès lors qu'on applique ce raisonnement à une carte de contact prédite. Cette dernière résultant des corrélations capturées dans la famille protéique, si le domaine adopte plusieurs conformations stables, les contacts capturés par ces approches peuvent correspondre à différentes conformations. Il est donc nécessaire de combiner dans le future le partitionnement des listes de contraintes avec le calcul de structures en parallèle.
+%\item L'utilisation du partitionnement risque de convergence vers la conformation alternative lorsque celle ci est entropiquement plus favorable que la conformation native.
+

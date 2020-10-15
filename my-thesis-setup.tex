@@ -1,0 +1,418 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thesis Configuration File
+%
+% Important note:
+% The main lines to change in this file are in the DOCUMENT VARIABLES
+% section, the rest of the file is for advanced configuration.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% !TEX root = my-thesis.tex
+
+
+% **************************************************
+% Files' Character Encoding
+% **************************************************
+\PassOptionsToPackage{utf8}{inputenc}
+\usepackage{inputenc}
+
+% **************************************************
+% Silence annoying warnings
+% **************************************************
+\RequirePackage{silence}
+\WarningFilter{titlesec}{Non standard sectioning command}
+\WarningFilter{scrreprt}{Usage of package}
+\WarningFilter{scrreprt}{Activating an ugly workaround}
+\WarningFilter{titlesec}{Non standard sectioning command detected}
+
+% **************************************************
+% Information and Commands for Reuse
+% **************************************************
+\newcommand{\thesisTitle}{Exploring the complexity of bacterial infection in 3D}
+\newcommand{\thesisName}{Cyril Matthey-Doret}
+\newcommand{\thesisSubject}{Thèse de doctorat en Bioinformatique}
+\newcommand{\thesisDate}{1er Octobre 2021}
+\newcommand{\thesisVersion}{0.1}
+
+\newcommand{\thesisPresident}{Pr. Romain Koszul}
+\newcommand{\thesisPresidentUniversity}{\protect{Sorbonne Université}}
+\newcommand{\thesisPresidentDepartment}{UMR 3525 CNRS Unité  de Régulation Spatiale des Génomes}
+
+\newcommand{\thesisFirstReviewer}{Dr. A}
+\newcommand{\thesisFirstReviewerUniversity}{\protect{Université A}}
+\newcommand{\thesisFirstReviewerDepartment}{Département A}
+
+\newcommand{\thesisSecondReviewer}{Dr. B}
+\newcommand{\thesisSecondReviewerUniversity}{\protect{Université B}}
+\newcommand{\thesisSecondReviewerDepartment}{Département B}
+
+\newcommand{\thesisFirstExaminer}{Dr. C}
+\newcommand{\thesisFirstExaminerUniversity}{\protect{Université C}}
+\newcommand{\thesisFirstExaminerDepartment}{Département C}
+
+%\newcommand{\thesisSecondExaminer}{Dr. John Doe}
+%\newcommand{\thesisSecondExaminerUniversity}{\protect{Clean Thesis Style University}}
+%\newcommand{\thesisSecondExaminerDepartment}{Department of Clean Thesis Style}
+
+\newcommand{\thesisFirstSupervisor}{Pr. Romain Koszul}
+%\newcommand{\thesisSecondSupervisor}{r. Benjamin Bardiaux}
+
+\newcommand{\thesisUniversity}{\protect{Sorbonne Université}}
+\newcommand{\thesisUniversityDepartment}{École doctorale Complexité du Vivant}
+\newcommand{\thesisUniversityInstitute}{Institut Pasteur}
+\newcommand{\thesisUniversityGroup}{Unité de Régulation Spatiale des Génomes}
+\newcommand{\thesisUniversityCity}{Paris}
+\newcommand{\thesisUniversityCityCedex}{Cedex 15}
+\newcommand{\thesisUniversityStreetAddress}{25-28 Rue du Docteur Roux}
+\newcommand{\thesisUniversityPostalCode}{75724}
+
+
+% **************************************************
+% Debug LaTeX Information
+% **************************************************
+%\listfiles
+
+
+% **************************************************
+% Packages options
+% **************************************************
+
+\PassOptionsToPackage{% setup clean thesis style
+    figuresep=colon,%
+    sansserif=false,%
+    hangfigurecaption=false,%
+    hangsection=true,%
+    hangsubsection=true,%
+    colorize=full,%
+    colortheme=blueroyalred,%
+    bibsys=biber,%
+%     bibfile=Mendeley,%
+    bibfile=library,%
+    bibstyle=numeric,%
+    wrapfooter=true,%
+}{cleanthesis}
+
+\PassOptionsToPackage{
+	acronyms,
+    translate=babel,
+    xindy,
+    toc,
+    nopostdot,
+    entrycounter,
+    nohypertypes={acronym,notation},
+    indexonlyfirst
+}{glossaries}
+
+\PassOptionsToPackage{
+	english,
+	french,
+    main=french
+}{babel}
+
+\PassOptionsToPackage{
+	user,
+    counter,
+    hyperref
+}{zref}
+
+\PassOptionsToPackage{
+	nameinlink
+}{cleveref}
+
+\PassOptionsToPackage{
+	para,
+    online,
+    flushleft
+}{threeparttable}
+
+% Remove several fields in bibliography
+
+
+
+% **************************************************
+% Load and Configure Packages
+% **************************************************
+
+
+\usepackage{babel} 						% babel system, adjust the language of the content
+\usepackage{cleanthesis}
+\usepackage{glossaries}						% Allow glossary and acronyms
+\usepackage[amssymb]{SIunits}				% symboles unites SI
+\usepackage{chngcntr}						% Reset Chapter counter for each part
+\usepackage{amsmath}
+\usepackage[euler]{textgreek}				% For better greek letters in text mode
+\usepackage{subcaption}						% Allow subfigures
+% \usepackage[lofdepth,lotdepth]{subfig}
+% \usepackage{etoolbox}
+% \usepackage{zref}							% Better label tags
+% \usepackage{cleveref}						% Better autorefs
+% \usepackage{xparse}
+\usepackage{xassoccnt}
+\usepackage[user,counter]{zref}
+\usepackage{xparse}
+\usepackage{threeparttable}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{wrapfig}
+\usepackage{array}
+% \usepackage{nameref}
+\usepackage{marginnote}
+%\usepackage{minted}
+
+% **************************************************
+% Setup
+% **************************************************
+% ..................................................
+% Commands
+% ..................................................
+\newsavebox{\largestimage}
+
+\DeclareCiteCommand{\citeauthorfirstlast}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \DeclareNameAlias{labelname}{first-last}%
+   \usebibmacro{prenote}}
+  {\ifciteindex
+     {\indexnames{labelname}}
+     {}%
+   \printnames{labelname}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+% ref commands, e.g. for images, tables and text labels
+% --------------------------------------------------
+% RESULT = (siehe Tab. 12.4)
+\newcommand{\tabref}[1]{(see Tab.~\ref{#1})}
+%
+% RESULT = (siehe Tab. 12.4)
+\newcommand{\tableref}[1]{(see Tab.~\ref{#1} Page~\pageref{#1})}
+%
+% --------------------------------------------------
+% RESULT = (siehe 3.4)
+\newcommand{\tref}[1]{(see \ref{#1})}
+%
+% RESULT = Abschnitt 3.4
+\newcommand{\treft}[1]{Section~\ref{#1}}
+%
+% RESULT = (siehe 3.4, Seite 12)
+\newcommand{\textref}[1]{(see \ref{#1}, Page~\pageref{#1})}
+%
+% RESULT = Abschnitt 3.4 (siehe Seite 12)
+\newcommand{\textreft}[1]{Section~\ref{#1} (see Page~\pageref{#1})}
+%
+% --------------------------------------------------
+% RESULT = (siehe Abb. 10.4)
+\newcommand{\fref}[1]{(see Fig.~\ref{#1})}
+%
+% RESULT = (siehe Abb. 10.4 b)
+\newcommand{\frefadd}[2]{(see Fig.~\ref{#1}~#2)}
+%
+% RESULT = (siehe Abb. 10.4, Seite 12)
+\newcommand{\figref}[1]{(see Fig.~\ref{#1}, Page~\pageref{#1})}
+%
+% RESULT = (siehe Abb. 10.4 b, Seite 12)
+\newcommand{\figrefadd}[2]{(see Fig.~\ref{#1}~#2, Page~\pageref{#1})}
+%
+% RESULT = Abbildung 10.4
+\newcommand{\figreft}[1]{Figure~\ref{#1}}
+%
+% RESULT = Abbildung 10.4 b
+\newcommand{\figrefaddt}[2]{Figure~\ref{#1}~#2}
+%
+% --------------------------------------------------
+% RESULT = (siehe Seite 12)
+\newcommand{\seepage}[1]{(see Page~\pageref{#1})}
+% ..................................................
+% Hyperref
+% ..................................................
+\hypersetup{% setup the hyperref-package options
+    pdftitle={\thesisTitle},    %   - title (PDF meta)
+    pdfsubject={\thesisSubject},%   - subject (PDF meta)
+    pdfauthor={\thesisName},    %   - author (PDF meta)
+    plainpages=false,           %   -
+    colorlinks=true,            %   - colorize links?
+    linktocpage=true,
+    pdfborder={0 0 0},          %   -
+    breaklinks=true,            %   - allow line break inside links
+    bookmarksnumbered=true,     %
+    bookmarksopen=true,         %
+    linkcolor=ctcolorblue,
+    urlcolor=ctcolorblue,
+    citecolor=black,
+}
+
+
+% ..................................................
+% Counter labels
+% ..................................................
+\counterwithin*{chapter}{part}	% Reset chapter counter each time part counter is called
+\counterwithin{table}{part}
+\counterwithout{table}{chapter}
+\counterwithin{figure}{part}
+\counterwithout{figure}{chapter}
+\renewcommand{\thetable}{\thepart.\Alph{table}}
+\renewcommand{\thefigure}{\thepart.\Alph{figure}}
+\renewcommand*{\figureformat}{\figurename~\thefigure}
+\renewcommand*{\tableformat}{\tablename~\thetable}
+% ..................................................
+% Lists
+% ..................................................
+\frenchbsetup{StandardLists=true}
+\setlist[itemize]{label={\LARGE\raisebox{-0.3ex}{\textbullet}}, font=\color{ctcoloroyalblue}}
+\newlist{todolist}{itemize}{3}
+\setlist[todolist]{label={\LARGE\raisebox{-0.3ex}{\textbullet}},font=\color{color_todo}\bfseries,itemsep=0pt,parsep=0pt,before=\color{color_todo}}
+% ..................................................
+% Glossaries  
+% ..................................................
+\DeclareDocumentCommand{\newdualentry}{ O{} O{} m m m m } {
+  \newglossaryentry{gls-#3}{name={#5},text={#5\glsadd{#3}},
+    description={#6},#1
+  }
+  \makeglossaries
+  \newacronym[see={[Glossaire:]{gls-#3}},#2]{#3}{#4}{#5\glsadd{gls-#3}}
+}
+\defglsentryfmt{%
+  \ifglsused{\glslabel}{%
+    \glsgenentryfmt\ignorespaces%
+  }{%
+    % Typeset first use
+    \textit{\glsgenentryfmt}\ignorespaces%
+  }%
+}
+\renewcommand*{\glsentrycounterlabel}{}%
+% \renewcommand*{\glspostlinkhook}{\textsuperscript{\ref{glsentry-\glslabel}}}
+% \renewcommand*{\glspostlinkhook}{\textsuperscript{\glsrefentry{\glslabel}}}
+% \renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}}		% Hack to remove color links in glossaries
+\renewcommand{\glossarypreamble}{\glsresetentrycounter} 
+\newglossary[nlg]{notation}{not}{ntn}{Notation}
+% \defglsdisplayfirst[\glsdefaulttype]{\textit{#1}\ignorespaces}
+
+% ..................................................
+% Bibliography
+% ..................................................
+\defbibheading{bibliography}[\bibname]{\chapter*{#1}\markboth{#1}{#1}}	% Redefine heading/footer for bibliography
+
+% ..................................................
+% Subcaption
+% ..................................................
+\renewcommand{\thesubfigure}{\alph{subfigure}}
+\captionsetup[subfigure]{labelformat=simple, labelsep=none, justification=centering}
+% \DeclareCaptionLabelFormat{graysf}{\textcolor{gray}{\sffamily (#2)}}
+% \captionsetup[subfigure]{labelsep=space,labelformat=graysf}
+% ..................................................
+% Caption names
+% ..................................................
+\renewcaptionname{english}{\figurename}{Fig.}
+\renewcaptionname{english}{\tablename}{Tab.}
+%\renewcaptionname{french}{\partname}{Partie}
+%\renewcaptionname{french}{\tablename}{Tableau}
+% ..................................................
+% Zref 
+% ..................................................
+% TODO: Sounds good, doesn't work !!
+\makeatletter
+
+% Define new properties
+\zref@newprop{childcountervalue}{\arabic{\LastRefSteppedCounter}}% This is the naked value
+\zref@newprop{parentcountervalue}{\csname the\GetParentCounter{\LastRefSteppedCounter}\endcsname}
+\newenvironment{conditions}
+{\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}={}$} l}}
+	{\end{tabular}\par\vspace{\belowdisplayskip}}
+% Add the new properties to the main property list stored with \zlabel
+\zref@addprops{main}{childcountervalue,parentcountervalue}
+
+
+\NewDocumentCommand{\parentref}{m}{%
+  \zref@ifrefundefined{#1}{%
+    -100%
+  }{%
+    \zref@extract{#1}{parentcountervalue}%
+  }%
+}
+
+
+\makeatother
+
+% \GetAllResetLists% Important
+% \RegisterPostLabelHook{\zlabel}% Important
+
+% ..................................................
+% Color tables 
+% ..................................................
+% Wener post (https://tex.stackexchange.com/a/33761)
+% David Carlisle post at tex.exchange (https://tex.stackexchange.com/a/91498)
+\colorlet{blcolor}{gray!80}
+\colorlet{tableheadcolor}{gray!25} % Table header colour = 25% gray
+\colorlet{tablerowcolor}{gray!10} % Table row separator colour = 10% gray
+\newcommand{\headcol}{\rowcolor{tableheadcolor}} %
+\newcommand{\rowcol}{\rowcolor{tablerowcolor}} %
+% Command \topline consists of a (slightly modified) \toprule followed by a \heavyrule rule of colour tableheadcolor (hence, 2 separate rules)
+\newcommand{\topline}{\arrayrulecolor{black}\specialrule{0.1em}{\abovetopsep}{0pt}%
+            \arrayrulecolor{tableheadcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}}
+% Command \midline consists of 3 rules (top colour tableheadcolor, middle colour black, bottom colour white)
+\newcommand{\midline}{\arrayrulecolor{tableheadcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+            \arrayrulecolor{white}\specialrule{\belowrulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}}
+% Command \rowmidlinecw consists of 3 rules (top colour tablerowcolor, middle colour black, bottom colour white)
+\newcommand{\rowmidlinecw}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+            \arrayrulecolor{white}\specialrule{\belowrulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}}
+% Command \rowmidlinewc consists of 3 rules (top colour white, middle colour black, bottom colour tablerowcolor)
+\newcommand{\rowmidlinewc}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+            \arrayrulecolor{tablerowcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}}
+% Command \rowmidlinew consists of 1 white rule
+\newcommand{\rowmidlinew}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}}
+% Command \rowmidlinec consists of 1 tablerowcolor rule
+\newcommand{\rowmidlinec}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}}
+% Command \bottomline consists of 2 rules (top colour
+\newcommand{\bottomline}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}\specialrule{\heavyrulewidth}{0pt}{\belowbottomsep}}%
+\newcommand{\bottomlinec}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+            \arrayrulecolor{black}\specialrule{\heavyrulewidth}{0pt}{\belowbottomsep}}%
+% Middle line connecting heading row and the second row
+\newcommand{\rowmidlineHR}{\arrayrulecolor{tableheadcolor}
+  \specialrule{\aboverulesep}{0pt}{0pt}%
+  \arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+  \arrayrulecolor{tablerowcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+  \arrayrulecolor{black}}
+  % Command \rowmidlinewc consists of 3 rules
+  % (top colour tableheadcolor, middle colour black, bottom colour tablerowcolor)
+% Secondary gray middle line 
+\newcommand{\rowmidlineG}{\arrayrulecolor{tablerowcolor}%
+  \specialrule{\aboverulesep}{0pt}{0pt}%
+  \arrayrulecolor{blcolor}\specialrule{\lightrulewidth}{0pt}{0pt}%
+  \arrayrulecolor{tablerowcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+  \arrayrulecolor{black}}
+\renewcommand{\arraystretch}{1.3}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}c}
+\newcolumntype{M}{>{\centering\arraybackslash}m}
+% ..................................................
+% Listings
+% ..................................................
+\lstdefinelanguage{Ini}
+{
+	basicstyle=\ttfamily\small,
+	columns=fullflexible,
+	morecomment=[s][\color{Orchid}\bfseries]{[}{]},
+	morecomment=[l]{\#},
+	morecomment=[l]{;},
+	commentstyle=\color{gray}\ttfamily,
+	morekeywords={},
+	otherkeywords={=,:},
+	keywordstyle={\color{green}\bfseries}
+}
+
+
+%\newenvironment{conditions}
+%{\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}={}$} l}}
+%	{\end{tabular}\par\vspace{\belowdisplayskip}}
