@@ -84,7 +84,7 @@
     hangsubsection=true,%
     colorize=full,%
     colortheme=blueroyalred,%
-    bibsys=biber,%
+    bibsys=bibtex,%
 %     bibfile=Mendeley,%
     bibfile=library,%
     bibstyle=numeric,%
@@ -259,7 +259,7 @@
 % ..................................................
 % Lists
 % ..................................................
-\frenchbsetup{StandardLists=true}
+%\frenchbsetup{StandardLists=true}
 \setlist[itemize]{label={\LARGE\raisebox{-0.3ex}{\textbullet}}, font=\color{ctcoloroyalblue}}
 \newlist{todolist}{itemize}{3}
 \setlist[todolist]{label={\LARGE\raisebox{-0.3ex}{\textbullet}},font=\color{color_todo}\bfseries,itemsep=0pt,parsep=0pt,before=\color{color_todo}}
@@ -271,7 +271,7 @@
     description={#6},#1
   }
   \makeglossaries
-  \newacronym[see={[Glossaire:]{gls-#3}},#2]{#3}{#4}{#5\glsadd{gls-#3}}
+  \newacronym[see={[Glossary:]{gls-#3}},#2]{#3}{#4}{#5\glsadd{gls-#3}}
 }
 \defglsentryfmt{%
   \ifglsused{\glslabel}{%

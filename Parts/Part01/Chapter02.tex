@@ -12,10 +12,15 @@
 
 \section{Capturing chromosome conformation}
 
+The use of genomics to investigate the three-dimensional organisation of the genome started with the invention of \acrfull{3C} \cite{Dekker2002}. This technique allowed to measure the frequency of physical interactions a pair of loci. This is done by crosslinking the genome with formaldehyde, which forms stable bonds between DNA and proteins, and subsequently digesting the genome with a restriction enzyme. The digested genome is then relilgated, and the religation will happen with different neighbouring fragment. Loci which are closer in space will be religated more often with each other in the population of cells. The crosslink is then reverted and qPCR is used to measure the quantity of religated products containing the two loci of interest. 
+
+Since then, many derivative of the \acrshort{3C} technique have been developed. The most significant improvement was brought by Hi-C. This method works similarly to 3C except that next generation sequencing is used instead of qPCR. This allows to quantify the interaction frequency of all versus all loci in the genome instead of using specific primers for a pair of locus. Hi-C also has an additional step where biotinylated bases are added during religation. This allows to pull-down religation products using streptavidin so that only products that underwent the digestion-religation process are sequenced.
+
+Hi-C allows to generate interaction frequency maps of the whole genome wich reflect its 3D structure.
+
 \section{Combining layers of biological informations}
 
 \section{Reproducibility and reliability challenges}
 % Impact of the reproducibility crisis
 % Software quality
 % The importance of standardisation
-\blindtext
