@@ -6,17 +6,35 @@
 
 %----------------------------------------------------------------------------------------
 
+A good phylogenetic representation of sequenced genomes is crucial for comparative analyses. This allows for example to  identify recent \acrshort{HGT} events. Besides species representation, genome completeness is also important for many genomics analyses which rely on the relative position of different biological elements on the genome sequence to draw biological conclusions. Here we describe in more detail the process of genome assembly and its relevance to infection genomics.
+
 \section{From contigs to chromosomes}
 % Define terminology, explain advantages of chromosome level assemblies and how to generate them
 % Subsections for bionano, linked reads and Hi-C
 % Maybe a quick mention of haplotype-resolved assemblies and genome-graphs
+Genome assembly consists in reconstructing the linear sequence of the genome from the output of DNA sequencing technologies. Of course the results depend on the quality of this output, but also on algorithms used to combine them.
 
-The emergence of specialized technologies aimed at scaffolding now allows to generate more continuous and correct genomes at reduced costs. One example is the recent rebirth of optical mapping through Bionano's sapphire technology which uses nickases to introduce fluorescent probes into chromosomes at specific sites. The order of these probes and their relative distance form barcodes which can then be used to scaffold genome assemblies, reorder and merge contigs. This is often combined with Hi-C to generate highly continuous assemblies even in the presence of repeated sequences.
+In the early days of genome sequencing, the Sanger method was used to read DNA sequences. Sanger is a low throughput, but highly accurate sequencing method. Genome assembly was performed using slow and costly experimental methods, such as \acrfull{BAC}. Briefly, this involved cloning short overlapping pieces of DNA of the genome into bacteria. Thise pieces were then amplified and sequenced. The complete sequence could then be recovered manually by aligning the overlapping ends of the \acrshort{BAC} sequences. This method was used for the human genome sequencing project.
 
+With the advent of \acrfull{NGS}, shotgun sequencing replaced Sanger for whole genome sequencing. \acrshort{NGS} had much higher throughput, allowing to sequence megabases of DNA very quickly. However, it could only read short sequences at a time, referred to as \Gls{read}s. With a large number of short reads, the problem of genome assembly became impossible to solve by hand. This brought a whole new field of bioinformatics to life: The development of genome assembly algorithms.
+
+The rationale of these algorithms is to generate highly contiguous genome assemblies from a large number of short reads. Most algorithms generate a \textit{de Bruijn} graphs where individual reads are nodes and sequence overlaps are edges. Ideally, one wants to find a "golden path", the shortest sequence that passes through every node, however this is often not possible because of homologous and repeated sequences in the genome. Whenever a repeated sequence is longer than the read itself, the graph can not be solved and heuristics have to be used. The resulting assemblies usually have a relatively high number of "solved" pieces called \Gls{contig}s.
+
+Third generation sequencing partially alleviates this issue by generating long albeit less accurate reads. Read length up to hundreds of thousands of basepairs can be generated, which allows to span most repeated regions. Recently, these technologies were used to generate telomere-to-telomere assemblies of several human chromosomes. These techniques still suffer from their lower base calling accuracy and are often combined with Illumina to correct these errors. They can be used to generate assemblies \textit{de-novo}, or to combine contigs of existing NGS assemblies into \Gls{scaffold}s.
+
+More recently the emergence of specialized technologies aimed at scaffolding have allowed to generate even more continuous and correct genomes at reduced costs. One example is the recent rebirth of optical mapping through Bionano's sapphire technology which uses nickases to introduce fluorescent probes into chromosomes at specific sites. The order of these probes and their relative distance form barcodes which can then be used to scaffold genome assemblies, reorder and merge contigs. This is often combined with Hi-C to generate highly continuous assemblies even in the presence of repeated sequences.
+
+Most recent genome assemblies combine a number of these different technologies to bring the number of scaffolds as close as possible to the real number of chromosomes.
 
 \section{Phylogenetic representation}
 % HGT detection requires a reference group
 
+A common way to analyze the genome of new microorganisms is to compare it to other species. To achieve this, one needs to have other closely related genomes available. A common case where good species genome representation is required is when attempting to detect \acrshort{HGT}.
+
+It is common to defined the common set of genes of a group of strains or species as their pangenome. This definition will be completely dependent on the number of available species in the group. .
+
+Recently, large consortia (genome10k, i5k, Darwin tree of life) undertook the daunting task of sequencing thousands of organisms throughout the tree of life. These large collaborations are likely to greatly improve the quality of comparative genomics results in the future.
+
 \section{The transition to genome graphs}
 
-Until recently, all genome references were stored as linear sequences of DNA. This linear sequence is often obtained from a mix of multiple individuals, or alleles within an individual. It is effectively a semi-arbitrary combination of multiple haplotypes merged into an artificial consensus sequence. A recent alternative is to produce a sequence graph instead. Given a collection of haplotypes, individuals, or strains of a species, one can generate a graph where identical regions are collapsed, while sample specific variants form bubbles retaining the genetic variability. As this approach is very recent, the support for genome graphs is currently limited to a few tools, making their applications very limited.
+Until recently, all genome references were stored as linear (or circular) sequences of DNA. This linear sequence is often obtained from a mix of multiple individuals, or alleles within an individual. It is effectively a semi-arbitrary combination of multiple haplotypes merged into an artificial consensus sequence. A recent alternative is to produce a sequence graph instead. Given a collection of haplotypes, individuals, or strains of a species, one can generate a graph where identical regions are collapsed, while sample specific variants form bubbles retaining the genetic variability. As this approach is very recent, the support for genome graphs is currently limited to a few tools, making their applications very limited.
