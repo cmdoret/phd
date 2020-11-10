@@ -8,12 +8,24 @@ SRCDIR="./src/"
 SRC = $(shell find $(SRCDIR) -type f -name '*.(R|py)')
 GFX = $(patsubst $(GFXDIR)/%.pdf, $(SRCDIR)/%.(R|py), $(SRC))
 
+.PHONY: clean
+
+clean:
+	rm -r *.aux *.acn *.fls *.glo *.lof *.lot *.nlg *.ntn *.run.xml *.xdy *.toc 
+
 .PHONY: all
-all: $(GFX)
+all: $(GFX) my-thesis.pdf
 
 $(SRCDIR)/%.(py|R): $(GFXDIR)/%.pdf
-    @mkdir -p "$(@D)"
+	@mkdir -p "$(@D)"
 	@echo "./$<" "$@"
+
+my-thesis.pdf: my-thesis.tex library.bib
+	pdflatex my-thesis
+	bibtex my-thesis
+	makeglossaries my-thesis
+	pdflatex my-thesis
+
 ### Part I ###
 ## ch:01-01 ##
 ## ch:01-02 ##
