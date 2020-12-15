@@ -29,7 +29,7 @@ Epigenetic changes, in the form of chemical modification of histone proteins off
 
 \section{Capturing chromosome conformation}
 
-Although DNA is a linear (or circular) molecule, it can fold back on itself and form three-dimensional structures which have several benefits compared to a linear structure. These benefit include compactness: For example, the human chromosome 1 would be 85mm long if straightened, but the whole genome fits in a nucleus where the diameter is around 10$\mu m$. Another key feature of genome folding is that it can be used as a higher order way to regulate gene expression. Compacting large regions of the genome allows to downregulate their activity. Smaller scale structures allow to fine tune gene regulation more locally. For example, chromatin loops can bring enhancer and promoters in close spatial proximity even if they would otherwise be far apart on the linear sequence. Compact chromatin domain also form local neighbourhoods where different loci are in close spatial proximity, while loci in distinct domains are isolated from each other. All these levels of spatial regulation are important to understand the coordination of the gene expression programme with other celluar processes.
+Although DNA is a linear (or circular) molecule, it can fold back on itself and form three-dimensional structures which have several benefits compared to a linear structure. These benefit include compactness: For example, the human chromosome 1 would be 85mm long if straightened, but the whole genome fits in a nucleus where the diameter is around 10$\mu m$. Another key feature of genome folding is that it can be used as a higher order way to regulate gene expression. Compacting large regions of the genome by spreading of heterochromatin allows to downregulate their activity. Smaller scale structures allow to fine tune gene regulation more locally. For example, chromatin loops can bring enhancer and promoters in close spatial proximity even if they would otherwise be far apart on the linear sequence. Compact chromatin domain also form local neighbourhoods where different loci are in close spatial proximity, while loci in distinct domains are isolated from each other. All these levels of spatial regulation are important to understand the coordination of the gene expression programme with other celluar processes.
 
 The use of genomics to investigate the three-dimensional organisation of the genome started with the invention of \acrfull{3C} \cite{Dekker2002}. This technique allowed to measure the frequency of physical interactions a pair of loci. This is done by crosslinking the genome with formaldehyde, which forms stable bonds between DNA and proteins, and subsequently digesting the genome with a restriction enzyme. The digested genome is then relilgated, and the religation will happen with different neighbouring fragment. Loci which are closer in space will be religated more often with each other in the population of cells. The crosslink is then reverted and qPCR is used to measure the quantity of religated products containing the two loci of interest. 
 
@@ -39,12 +39,8 @@ Hi-C allows to generate interaction frequency maps of the whole genome wich refl
 
 \section{Combining layers of biological informations}
 
-When analysing the different layers of genome regulations (i.e. gene expression, epigenetics, spatial interactions), one of the main challenges is to find a relevant way to combine these informations. 
+When analysing the different layers of genome regulations (i.e. gene expression, epigenetics, spatial interactions), one of the main challenges is to find a efficient way to combine these informations. 
 
-The most common method is to analyse them separately and find regions of deregulation common to the different layers. But there have already been attempts at fully integrating these levels of informations %MOFA, DL from Anshul Kundaje
+More often than not, they are analysed separately to find regions of deregulation common to the different layers. But there have already been attempts at fully integrating these levels of informations %MOFA, DL from Anshul Kundaje
 
 
-\section{Reproducibility and reliability challenges}
-% Impact of the reproducibility crisis
-% Software quality
-% The importance of standardisation
