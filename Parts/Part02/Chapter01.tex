@@ -1,6 +1,6 @@
 % Chapter X
 
-\chapter{Extracting information from Chromosome contact maps} % Chapter title
+\chapter{Extracting information from contact maps} % Chapter title
 
 \label{ch:02-01} % For referencing the chapter elsewhere, use \autoref{ch:name} 
 
@@ -14,7 +14,7 @@ The spatial features and changes of interest are diluted in the population and c
 
 In this section we review the recent methodlogical developments that allow to correct the Hi-C signal and present new methods to extract biological features from these datasets. These developments proved necessary to tackle the questions raised in further chapters.
 
-\section{Streamlining pipelines}
+\section{Streamlined and reproducible Hi-C processing}
 % Existing methods: painful to install, non tested (risky), non reproducible
 % hicstuff, hicreppy
 
@@ -34,14 +34,42 @@ The pipeline also provides reproducibility through an automatic logging of every
 
 The project has already fostered a community of users which are offering their contributions, suggest features or report issues they encounter.
 
-\section{Pattern detection in chromosome contact maps}
+\section{Feature detection with Chromosight}
 
+The downstream analysis of chromosome contact maps often involves looking for signals reflecting biologically relevant spatial interactions. Several specialized approaches for pattern detection have been proposed in the past. Each of these methods use a set of specific rules to detect one particular type of pattern. For example, HICCUPS detects chromatin loops by scanning each pixel of the contact map for contact enrichment compared to surrounding pixels.
 
+These specialized methods present several drawbacks, including strong dependence on parameters and poor generalization to non-model species. These shortcomings motivated us to work on a more generalized pattern detection method that uses template matching to identify arbitrary patterns in chromosome contact maps.
 
 \section{Change detection across biological conditions}
 
-Change detection is a common issue in the field of signal processing and remote sensing. Given two or more input signals, such as images, we want to find portions that differ between the two inputs. This principle can also be applied to Hi-C contacts, where we can detect regions of contact maps that differ between biological conditions.
+Change detection is a common issue in the field of signal processing and remote sensing. Given two or more input signals such as images, we want to find portions that differ between the two inputs. This principle can also be applied to Hi-C contacts, where we can detect regions of contact maps that differ between biological conditions.
 
-Many approaches can be taken to detect these changes. Some of them, such as diffhic, formulate the problem similarly to a differential expression RNAseq analysis using contact counts instead of read counts. This approach has the benefit of being statistically sound and straightforward, but it only finds contact increase, which could be caused by a number of different phenomenon.
+Change detection in Hi-C contact maps is required whenever we want to identify genomic regions whose spatial organization is altered between two conditions.
 
-We developed pareidolia, a method with an apriori on the type of signal to detect. The method is "supervised" in the sense that it requires a kernel representing the feature of interest. Pareidolia relies on Chromosight's backend to convert the contact map of each condition into a map of correlation coefficients representing similarity with the feature of interest. Change detection is then performed on these coefficients. As a consequence, rather than looking for contacts increase, pareidolia looks for changes in feature intensity, such as border sharpness or looping intensity.
+Many approaches can be taken to detect these changes. Some of them, such as diffhic, formulate the problem similarly to a differential expression RNAseq analysis using contact counts instead of read counts. This approach has the benefit of being statistically sound and straightforward, but it only finds contact increase. Local increase in contacts can represent a specific spatial interactions, but also differential accessibility or insulation. which could be caused by a number of different phenomenon.
+
+We developed pareidolia, a software package for change detection with an apriori on the type of signal to detect. The method is "supervised" in the sense that it requires a kernel representing the feature of interest. Pareidolia relies on Chromosight's backend to convert the contact map of each condition into a map of correlation coefficients representing similarity with the feature of interest. Change detection is then performed on these coefficients. As a consequence, rather than looking for contacts increase, pareidolia looks for changes in feature intensity, such as border sharpness or looping intensity.
+
+\subsection{Pareidolia algorithm}
+
+Pareidolia works by comparing one or several samples issued from two or more conditions such as treatments or timepoints.
+
+Assuming two conditions $t={t_0, t_1}$, where multiple samples (replicates) $(r_1, r_2, ..., r_R)$ can share the same condition. The contact matrix from each sample $H_{r, t}$ is first convoluted with a kernel $K$ representing the pattern of interest. In the resulting matrix $M$, each value $M_{r, t}[i, j]$ is a Pearson correlation coefficient with the kernel. $M$ is computed as described in equation...
+
+
+Change detection can then be performed on the correlation maps using two different methods.
+
+The first method is inspired by median filtering-based background formation. We start by generating a background matrix for each condition (timepoint), whose values are defined as the median of all replicates in that condition: 
+
+\begin{equation}
+    B_t[i, j] = median(M_{1, t}, M_{2, t}, ..., M_{R, t})
+\end{equation}
+
+We then compute the matrix of absolute variations $V$ between each replicate and their condition's median background. The resulting distribution is used to define a percentile threshold of technical variation.
+
+\begin{align}
+    V_t &= M_{r, t} - B_t \\
+    T &= Q_{V_{t0},V_{t1}}(0.95)
+\end{align}
+
+The alternative method is to compute a test statistic and associated p-value for every pixel [i,j], and then select contiguous regions of strong changes.
