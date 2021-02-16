@@ -1,24 +1,24 @@
 #!/usr/bin/env make
-# This makefile is used to generate / update figures on the fly.
-# All scripts in SRCDIR are detected and their file hierarchy is replicated
-# into GFXDIR so that each script has a figure of the same name.
+# This makefile is used to compile my thesis on the fly.
+# It build the glossary, bibliography and PDF
 # cmdoret, 20201030
-GFXDIR="./gfx/"
-SRCDIR="./src/"
-SRC = $(shell find $(SRCDIR) -type f -name '*.(R|py)')
-GFX = $(patsubst $(GFXDIR)/%.pdf, $(SRCDIR)/%.(R|py), $(SRC))
 
-.PHONY: clean
+#GFXDIR="./gfx/"
+#SRCDIR="./src/"
+#SRC = $(shell find $(SRCDIR) -type f -regex '.*\.\(R\|py\)')
+#GFX = $(patsubst $(GFXDIR)/%.pdf, $(SRCDIR)/%.(R|py), $(SRC))
+
+#$(SRCDIR)/%.(py|R): $(GFXDIR)/%.pdf
+#	@mkdir -p "$(@D)"
+#	@echo "./$<" "$@"
+
+
+.PHONY: clean,all
+all: my-thesis.pdf
 
 clean:
-	rm -r *.aux *.acn *.fls *.glo *.lof *.lot *.nlg *.ntn *.run.xml *.xdy *.toc 
+	find ./ -regex '.*\.\(aux\|acn\|fls\|glo\|lof\|lot\|nlg\|ntn\|run.xml\|xdy\|toc\)$$' -delete
 
-.PHONY: all
-all: $(GFX) my-thesis.pdf
-
-$(SRCDIR)/%.(py|R): $(GFXDIR)/%.pdf
-	@mkdir -p "$(@D)"
-	@echo "./$<" "$@"
 
 my-thesis.pdf: my-thesis.tex library.bib
 	pdflatex my-thesis
