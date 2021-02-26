@@ -5,14 +5,15 @@
 \label{ch:01-03} % For referencing the chapter elsewhere, use \autoref{ch:name} 
 
 %----------------------------------------------------------------------------------------
+Most of the genomic techniques presented before require a complete reference genome as downstream analyses will rely on the relative position of different biological elements on the genome sequence to draw biological conclusions. 
 
-A good phylogenetic representation of sequenced genomes is crucial for comparative analyses. This allows for example to  identify recent \acrshort{HGT} events. Besides species representation, genome completeness is also important for many genomics analyses which rely on the relative position of different biological elements on the genome sequence to draw biological conclusions. Here we describe in more detail the process of genome assembly and its relevance to infection genomics.
+A good phylogenetic representation of sequenced genomes is also crucial for comparative analyses. This allows for example to  identify recent \acrshort{HGT} events. Here we describe in more detail the process of genome assembly and its relevance to infection genomics.
 
 \section{From contigs to chromosomes}
 % Define terminology, explain advantages of chromosome level assemblies and how to generate them
 % Subsections for bionano, linked reads and Hi-C
 % Maybe a quick mention of haplotype-resolved assemblies and genome-graphs
-Genome assembly consists in reconstructing the linear sequence of the genome from the output of DNA sequencing technologies. Of course the results depend on the quality of this output, but also on algorithms used to combine them.
+Genome assembly consists in reconstructing the linear sequence of the genome from the readings of DNA sequencing technologies. Although the final assembly depends on the quality of these readings, the algorithms used to combine their information are also crucial.
 
 In the early days of genome sequencing, the Sanger method was used to read DNA sequences. Sanger is a low throughput, but highly accurate sequencing method. Genome assembly was performed using slow and costly experimental methods, such as \acrfull{BAC}. Briefly, this involved cloning short overlapping pieces of DNA of the genome into bacteria. Thise pieces were then amplified and sequenced. The complete sequence could then be recovered manually by aligning the overlapping ends of the \acrshort{BAC} sequences. This method was used for the human genome sequencing project.
 
@@ -31,7 +32,7 @@ Most recent genome assemblies combine a number of these different technologies t
 
 A common way to analyze the genome of new microorganisms is to compare it to other species. To achieve this, one needs to have other closely related genomes available. A common case where good species genome representation is required is when attempting to detect \acrshort{HGT}.
 
-It is common to defined the common set of genes of a group of strains or species as their pangenome. This definition will be completely dependent on the number of available species in the group. .
+It is common to define the common set of genes of a group of strains or species as their pangenome. This definition will be completely dependent on the number of available species in the group. .
 
 Recently, large consortia (genome10k, i5k, Darwin tree of life) undertook the daunting task of sequencing thousands of organisms throughout the tree of life. These large collaborations are likely to greatly improve the quality of comparative genomics results in the future.
 
