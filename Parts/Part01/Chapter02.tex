@@ -18,13 +18,19 @@ While these methods work well to determine differences between alleles, they do 
 
 \section{Genomics to probe homeostasis}
 
-When host cells are exposed to or infected by a pathogen, their homeostatic state is disrupted. This disruption is a combination of alterations caused by the pathogen to colonize the host cell and host-triggered immune reactions to improve its survival. These two components can usually be unentangled in infection experiments by using a disabled pathogen. The pathogen will still harbour the antigens triggering host reactions, but will be unable to cause any harms. One can then deduce the pathogen-caused disruptions by comparing the infection results from real and disabled pathogen. 
+When host cells are exposed to or infected by a pathogen, their homeostatic state is disrupted. This disruption is a combination of alterations caused by the pathogen to colonize the host cell and host-triggered immune reactions to improve its survival. These two components can usually be unentangled in infection experiments by using a disabled pathogen. The pathogen will still harbour the antigens triggering host reactions, but will be unable to cause any harms. One can then deduce the pathogen-caused disruptions by comparing the infection results from a standard and disabled pathogen. 
 
-Multiple levels of regulation are affected upon infection, from gene expression to epigenetic states, and over the years, a vast arsenal of NGS techniques have been developed to read these regulatory states. 
+Multiple levels of regulation are affected upon infection, from signalling to epigenetic modifications \cite{rolandoLegionellaPneumophilaType2014}, and over the years, a vast arsenal of NGS techniques have been developed to read these regulatory states. 
 
-The most frequently used feature is gene expression. The transcribed RNAs present in the sample can be reverse-transcribed into cDNA and sequenced. The relative abundance of each gene's transcript allows to quantify the expression of the whole genome, known as the transcriptome. Transcriptomes can then be compared between different conditions to find out which genes undergo perturbations during infection. 
+The most frequently used feature is gene expression. The transcribed RNAs present in the sample can be reverse-transcribed into cDNA and sequenced and the relative abundance of each gene's transcript allows to quantify the expression of the whole genome, known as the transcriptome. Transcriptomes can then be compared between different conditions to find out which genes undergo perturbations during infection. 
 
-Epigenetic changes, in the form of chemical modification of histone proteins offer yet another way to regulate gene expression in eukaryotes. The amount of these epigenetic marks can be measured along the genome using another NGS-derived technique known as \acrfull{ChIPseq}. In \acrshort{ChIPseq}, the chromatin sample is crosslinked with formaldehyde to generate covalent bonds between proteins and DNA. The sample is then sonicated to break the DNA into smaller fragments. Beads coated with specific antibodies against a protein of interest (e.g. an epigenetic mark) are then added and the beads are then precipitated to retrieve them. The crosslinked is then reversed and the DNA fragments purified. This allows to retrieve all genomic regions that were bound to the protein of interest. 
+Many levels of regulation allow to fine tune gene expression in eukaryote (Fig. \ref{fig:01-02:transcriptional-regulation}). Regulatory elements can be directly encoded by the sequence and trigger the recruitment of protein complexes to fine tune gene expression. Epigenetic changes, in the form of chemical modification of histone proteins offer yet another way to regulate gene expression in eukaryotes. The amount of these epigenetic marks can be measured along the genome using another NGS-derived technique known as \acrfull{ChIPseq}. In \acrshort{ChIPseq}, the chromatin sample is crosslinked with formaldehyde to generate covalent bonds between proteins and DNA. The sample is then sonicated to break the DNA into smaller fragments. Beads coated with specific antibodies against a protein of interest (e.g. an epigenetic mark) are then added and the beads are then precipitated to retrieve them. The crosslinked is then reversed and the DNA fragments purified. This allows to retrieve all genomic regions that were bound to the protein of interest. 
+
+\begin{figure}
+    \includegraphics[width=\textwidth]{Parts/Part01/gfx/transcriptional_regulation_levels.pdf}
+    \caption{Regulation of transcription in eukaryotic cells. Visual summary of the different levels at which transcription can be regulated. At the largest scale (1), the chromatin environment can form structures affecting transcription. The open space between nucleosome can also affect accessibility of protein complexes to gene sequences (2). Chemical modifications on histone proteins form an epigenetic code defining the recruitment of transcriptional complexes on the genome (3). The availablity of those factors (4) and the proximity of regulatory sequences such as enhancers (5) provide another level of transciptional regulation. Reprinted from “Regulation of Transcription in Eukaryotic Cells”, by BioRender.com (2020). Retrieved from https://app.biorender.com/biorender-templates }
+    \label{fig:01-02:transcriptional-regulation}
+\end{figure}
 
 
 \section{Capturing chromosome conformation}
@@ -56,6 +62,33 @@ Each spatial structure formed by chromatin is reflected on the contact map as a 
 \section{Combining layers of biological informations}
 
 The central dogma of biology - "DNA makes RNA and RNA makes protein" - exposes a linear set of reactions that is rarely sufficient to explain the complexity of biological processes. The fine tuning required for proper regulation is achieved through feedback loops and cross-talk between the different types of molecules. Common examples are methylation of DNA by proteins to reduce gene expression \cite{zemachGenomeWideEvolutionaryAnalysis2010}, noncoding RNAs recruiting proteins to repress transcription \cite{wangLongNoncodingRNA2018}, or post-translational modifications of proteins.
+
+\tikzstyle{decision} = [diamond, draw, fill=blue!20,
+    text width=4.5em, text badly centered, node distance=0.5cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw,
+    text width=5em, text centered, rounded corners, minimum height=2em, node distance=1.5cm]
+\tikzstyle{line} = [draw, very thick, color=black!50, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=1.5cm,
+    minimum height=2em]
+\begin{figure}[htb]
+    \begin{tikzpicture}[font=\small,thick]
+
+    % Place nodes
+    \node [block] (dna) {DNA};
+    \node [cloud, below of=dna] (transcription) {Transcription};
+    \node [block, below of=transcription] (rna) {RNA};
+    \node [cloud, below of=rna] (translation) {Translation};
+    \node [block, below of=translation] (protein) {Protein};
+    \node [cloud, below of=protein] (catalysis) {Catalysis};
+    % Draw edges
+    \path [line] (dna) -- (transcription);
+    \path [line] (transcription) -- (rna);
+    \path [line] (rna) -- (translation);
+    \path [line] (translation) -- node {no}(protein);
+    \path [line] (protein) -- (catalysis);
+    \end{tikzpicture}
+
+\end{figure}
 
 There is now a growing area of research focusing on the development of models and tools that combine the various layers of "omics" information, such as genetic mutations, gene expression, protein binding, histone modifications or protein abundance. 
 
