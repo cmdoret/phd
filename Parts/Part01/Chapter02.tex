@@ -39,7 +39,7 @@ Although DNA is a linear (or circular) molecule, it can fold back on itself and 
 
 The use of genomics to investigate the three-dimensional organisation of the genome started with the invention of \acrfull{3C} \cite{dekkerCapturingChromosomeConformation2002}. This technique allowed to measure the frequency of physical interactions a pair of loci (Fig. \ref{fig:01-02:3c}). This is done by crosslinking the genome with formaldehyde, which forms stable bonds between DNA and proteins, and subsequently digesting the genome with a restriction enzyme. Genomic regions closer in space will be crosslinked together more frequently, resulting in pairs or complexes of chromatin fragments from different genomic regions that were spatially interacting. The digested genome is then religated. Loci which are closer in space are religated more often with each other in the population of cells. The crosslink is then reverted and primers from two regions of interest are added to perform qPCR. This allows to measure the quantity of religated products containing the two loci of interest. Thus, 3C allows to quantify the spatial proximity between two known genomic loci.
 
-\begin{figure}[b]
+\begin{figure}[htb]
     \includegraphics[width=\textwidth]{Parts/Part01/gfx/3c_protocol.pdf}
     \caption{Chromosome conformation capture protocol: Chromosome conformation capture protocol share common steps (top): The chromatin is first crosslinked to form covalent DNA-protein bonds and then digested using a restriction enzyme. The Hi-C protocol subsequently differs from the original 3C protocol. In 3C (left), fragments are religated, the crosslinked is reversed and specific primers are added to amplify a pair of known loci. This allows to quantify interaction between 2 loci. In Hi-C (right), the fragments ends are filled with biotinylated nucleotides (pink), religated and the crosslinked is reversed. Streptavidin beads are then used to pull down religation products which are then sequenced.}
 	\label{fig:01-02:3c}
@@ -53,7 +53,7 @@ The various folding structures formed by chromatin are created by DNA binding pr
 
 Each spatial structure formed by chromatin is reflected on the contact map as a distinct pattern (Fig. \ref{fig:01-02:hic}b). At the largest scale, chromosomes are isolated from each other in the nucleus, occupying distinct "chromosome territories". This is reflected as dark squares along the diagonal of the whole genome contact map as each chromosome interacts more with itself than any other chromosome. Within each chromosome chromatin forms "insulation domains", known as \acrfull{TAD}s in mammals. Genes sharing the same domain are in close proximity, while being isolated from genes in neighbouring domains . Genes within the same domain also tend to be co-regulated \cite{noraSpatialPartitioningRegulatory2012}. Domains form dark squares along the diagonal of a chromosome, due to the enriched intra-domain interactions at the expense of inter-domain contacts (Fig. \ref{fig:01-02:hic}b, bottom). At a finer scale, chromatin loops are visible on contact maps as dots away from the diagonal (Fig. \ref{fig:01-02:hic}b, middle). The coordinates of those dots correspond to the genomic positions of roadblocks which stopped the extrusion process.
 
-\begin{figure}[b]
+\begin{figure}[htb]
     \includegraphics[width=\textwidth]{Parts/Part01/gfx/hic_interpretation.pdf}
     \caption{Interpretation of Hi-C contact maps: \textbf{a}: The Hi-C protocol (left) generates millions of read pairs representing contacts between genomic loci in a population of cells. Those contacts can be stored into an all-versus-all contact matrix (right) averaging all contacts in the population. Each chromosome in the matrix forms a square of strong self-interactions along the diagonal due to chromosomal territories. \textbf{b:} Within each chromosomal map, different contact patterns reflect specific conformations (right). The main feature of a contact map is the diagonal gradient (top) caused by the contact decay according to genomic distances. Chromatin loops between two anchor loci are visible as dots away from the diagonal (middle). Insulation domains form squares along the diagonal of a chromosome where loci within the same domain interact strongly, but interactions between domains are depleted}
 	\label{fig:01-02:hic}
@@ -61,36 +61,15 @@ Each spatial structure formed by chromatin is reflected on the contact map as a 
 
 \section{Combining layers of biological informations}
 
-The central dogma of biology - "DNA makes RNA and RNA makes protein" - exposes a linear set of reactions that is rarely sufficient to explain the complexity of biological processes. The fine tuning required for proper regulation is achieved through feedback loops and cross-talk between the different types of molecules. Common examples are methylation of DNA by proteins to reduce gene expression \cite{zemachGenomeWideEvolutionaryAnalysis2010}, noncoding RNAs recruiting proteins to repress transcription \cite{wangLongNoncodingRNA2018}, or post-translational modifications of proteins.
+The central dogma of biology - "DNA makes RNA and RNA makes protein" - exposes a linear set of reactions carrying the flow of information in living organisms. It is now known that these reactions by themselves are hardly sufficient to explain the complexity of biological processes. The fine tuning required for proper regulation is achieved through feedback loops and cross-talk between the different types of molecules (Fig. \ref{fig:01-02:central-dogma}). Common examples are methylation of DNA by proteins to reduce gene expression \cite{zemachGenomeWideEvolutionaryAnalysis2010}, noncoding RNAs recruiting proteins to repress transcription \cite{wangLongNoncodingRNA2018} or directly repressing translation by preventing ribosome binding \citep{sharmaSmallRNARegulates2007,vecerekControlFurSynthesis2007}.
 
-\tikzstyle{decision} = [diamond, draw, fill=blue!20,
-    text width=4.5em, text badly centered, node distance=0.5cm, inner sep=0pt]
-\tikzstyle{block} = [rectangle, draw,
-    text width=5em, text centered, rounded corners, minimum height=2em, node distance=1.5cm]
-\tikzstyle{line} = [draw, very thick, color=black!50, -latex']
-\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=1.5cm,
-    minimum height=2em]
 \begin{figure}[htb]
-    \begin{tikzpicture}[font=\small,thick]
-
-    % Place nodes
-    \node [block] (dna) {DNA};
-    \node [cloud, below of=dna] (transcription) {Transcription};
-    \node [block, below of=transcription] (rna) {RNA};
-    \node [cloud, below of=rna] (translation) {Translation};
-    \node [block, below of=translation] (protein) {Protein};
-    \node [cloud, below of=protein] (catalysis) {Catalysis};
-    % Draw edges
-    \path [line] (dna) -- (transcription);
-    \path [line] (transcription) -- (rna);
-    \path [line] (rna) -- (translation);
-    \path [line] (translation) -- node {no}(protein);
-    \path [line] (protein) -- (catalysis);
-    \end{tikzpicture}
-
+    \includegraphics[width=0.8\textwidth]{Parts/Part01/gfx/central_dogma_regulation.pdf}
+    \caption{Central dogma of molecular biology. Products and reactions from the central dogma are shown in green, with grey arrows showing some of the regulatory interactions between the different biomolecules.}
+    \label{fig:01-02:central-dogma}
 \end{figure}
 
-There is now a growing area of research focusing on the development of models and tools that combine the various layers of "omics" information, such as genetic mutations, gene expression, protein binding, histone modifications or protein abundance. 
+There is now a growing area of research focusing on the development of methods that combine these layers of information. They aim to gain an integrative view of biology to better model the behaviour of molecular networks. This is done by combining "omics" datasets measuring various biomolecules, such as genetic mutations, gene expression, protein binding, histone modifications or protein abundance.
 
 One of the main challenges is to find efficient ways to combine these informations to extract meaningful biological information. More often than not, they are analysed separately to find regions of deregulation common to the different layers. But there have already been attempts at fully integrating these levels of informations %MOFA, DL from Anshul Kundaje
 
