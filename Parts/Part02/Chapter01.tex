@@ -1,6 +1,6 @@
 % Chapter X
 
-\chapter{Extracting information from contact maps} % Chapter title
+\chapter{Extracting biological signal from contact maps} % Chapter title
 
 \label{ch:02-01} % For referencing the chapter elsewhere, use \autoref{ch:name} 
 
@@ -29,7 +29,7 @@ These biases must be accounted when processing Hi-C data. This can be achieved b
 
 This preprocessing is often performed using custom scripts and prone to errors, bugs and lack of informations about parameters. In an effort to improve reproducibility and accessibility of Hi-C analysis, we developed hicstuff, an open source Hi-C pipeline that incorporate all the aforementioned steps, along with several downstream processing utilities.
 
-Hicstuff is meant to be easily accessible \cite{matthey-doretSimpleLibraryPipeline2021}, even to non-expert users. It has a comprehensive online documentation and tutorials and the program and its dependencies are installed with a single command. The code is written in python, and is covered by unit tests to reduce the likelihood of bugs. Hicstuff runs well with default parameters, but has many options to fit most common use cases. It works regardless of genome size organism.
+Hicstuff is meant to be easily accessible \cite{matthey-doretSimpleLibraryPipeline2021}, even to non-expert users. It has a comprehensive online documentation and tutorials and the program and its dependencies are installed with a single command. The code is written in python and is exposed both via a \acrfull{CLI} to use it as an executable, and an \acrfull{API} to import it as a python library. It is covered by unit tests which are automatically executed on each new release, on the cloud by a continuous integration service to reduce the likelihood of bugs. Hicstuff runs well with default parameters, but has many options to fit most common use cases. It works regardless of genome size organism.
 
 The pipeline also provides reproducibility through an automatic logging of every intermediate result in the pipeline as well as the input parameters used.
 
@@ -43,11 +43,12 @@ These specialized methods present several drawbacks, including strong dependence
 
 Chromosight uses template matching to identify features on a chromosome contact map. This technique consists in scanning the input Hi-C matrix with a smaller "kernel" image corresponding to the pattern of interest (e.g. a loop) to identify input regions bearing similarity to the kernel. This has the added benefit of allowing to swap the kernel to detect a different feature.
 
-One of the main algorithmic challenges when applying a convolution-based method to Hi-C data is the size of matrices. Hi-C matrices are notoriously large, but they are also extremely sparse (loci do not interact with each other). As a consequence, sparse matrix representation is generally used to handle Hi-C data. In the case of large genomes, such as that of \textit{Homo sapiens}, this is necessary to store an entire chromosome's contact map into a regular computer's memory. One of the main drawbacks of sparse representation is that most algorithms are slower and harder to implement on such matrices. In the case of Chromosight, there was no implementation of convolution for sparse matrices, which prompted us to write an efficient methods to scan the billion of pixels from Hi-C maps in reasonable time. Fortunately, the convolution problem can be reformulated as a matrix multiplication by transforming the input matrices, and matrix multiplication is a standardized operation that has been highly optimized in low level libraries, including for sparse matrices.
+One of the main algorithmic challenges of applying a convolution-based method to Hi-C data is the size of matrices. Hi-C matrices are notoriously large, but they are also extremely sparse (loci do not interact with each other). As a consequence, sparse matrix representation is generally used to handle Hi-C data. In the case of large genomes, such as that of \textit{Homo sapiens}, this is necessary to store an entire chromosome's contact map into a regular computer's memory. One of the main drawbacks of sparse representation is that most algorithms are slower and harder to implement on such matrices. No implementation of convolution for sparse matrices was openly available, which prompted us to write an efficient method to scan the billion of pixels from Hi-C maps in reasonable time. Fortunately, the convolution problem can be reformulated as a matrix multiplication by transforming the input matrices (see \ref{sec:04-B-01:convolution}), and matrix multiplication is a standardized operation that has been highly optimized in low level libraries, including for sparse matrices.
 
-Chromosight is a python package that takes cool files as input. During its development, we put special attention on good software practice mentioned in section \ref{sec:02-01:streamlined-processing} to make it easy to use and accessible. This was done by spending time documenting the python API and command line interface as well as putting tutorial examples. Furthermore, the program is covered by a suite of unit tests set up with continuous integration. On every new release, Chromosight is automatically distributed on PyPI, bioconda and dockerhub.
+Chromosight is a python package that takes cool files as input. During its development, we put special attention on good software practice mentioned in section \ref{sec:02-01:streamlined-processing} to make it easy to use and accessible. This was done by spending time documenting the python \acrshort{API} and the \acrshort{CLI} as well as putting tutorial examples. Furthermore, the program is covered by a suite of unit tests set up with continuous integration. On every new release, Chromosight is automatically distributed on PyPI, bioconda and dockerhub to accomodate the different use cases and pipelines.
 
-Chromosights algorithm, results and benchmark against state of the art loop detection methods are presented in section \ref{sec:appendix:publications}.
+Chromosights algorithm, results and benchmark against state of the art loop detection methods are presented in section \ref{ch:04-A:publications}.
+
 
 \section{Change detection across biological conditions}
 
@@ -63,8 +64,7 @@ We developed pareidolia, a software package for change detection with an apriori
 
 Pareidolia works by comparing one or several samples issued from two or more conditions such as treatments or timepoints.
 
-Assuming two conditions $t={t_0, t_1}$, where multiple samples (replicates) $(r_1, r_2, ..., r_R)$ can share the same condition. The contact matrix from each sample $H_{r, t}$ is first convoluted with a kernel $K$ representing the pattern of interest. In the resulting matrix $M$, each value $M_{r, t}[i, j]$ is a Pearson correlation coefficient with the kernel. $M$ is computed as described in equation...
-
+Assuming two conditions $t={t_0, t_1}$, where multiple samples (replicates) $(r_1, r_2, ..., r_R)$ can share the same condition. The contact matrix from each sample $H_{r, t}$ is first convoluted with a kernel $K$ representing the pattern of interest, using Chromosight's \acrshort{API}. In the resulting matrix $M$, each value $M_{r, t}[i, j]$ is a Pearson correlation coefficient with the kernel. $M$ is computed as described in equation...
 
 Change detection can then be performed on the correlation maps using two different methods.
 
@@ -73,6 +73,8 @@ The first method is inspired by median filtering-based background formation. We 
 \begin{equation}
     B_t[i, j] = median(M_{1, t}, M_{2, t}, ..., M_{R, t})
 \end{equation}
+
+Technical variability (among replicates) is then used to filter out noisy regions. This is done by computing a signal to noise ratio threshold.
 
 We then compute the matrix of absolute variations $V$ between each replicate and their condition's median background. The resulting distribution is used to define a percentile threshold of technical variation.
 

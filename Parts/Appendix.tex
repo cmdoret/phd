@@ -2,21 +2,71 @@
 \ctparttext{}
 \part{Appendices}
 
-\chapter{Supplementary Information}
-\label{sec:supdata}
-
- \section{Publications}
- \label{sec:appendix:publications}
-
+\chapter{Publications}
+ \label{ch:04-A:publications}
     Articles published in the context of this work are included below.
 
     \includepdf[
         pages=-,
         addtotoc={
             1,
-            subsection,
-            4,
+            section,
+            3,
             Computer vision for pattern detection in chromosome contact maps,
             chromosight_paper
         }
     ]{Publications/chromosight_publication_supp.pdf}
+
+\chapter{Supplementary information}
+\label{ch:04-B:supdata}
+
+    \section{Sparse convolution in Chromosight}
+    \label{sec:04-B-01:convolution}
+
+The explanation below describes how Chromosight reformulates convolution into a matrix multiplication problem to better handle large sparse matrices. The algorithm is inspired from \cite{NeuralNetwork2D}. Let S be the signal (Hi-C) matrix and K the kernel matrix.
+
+\begin{equation}
+    S = 
+    \begin{bmatrix}
+        4 & 2 & 1 \\
+        2 & 4 & 1 \\
+        1 & 1 & 3
+    \end{bmatrix}
+    K =
+    \begin{bmatrix}
+        10 & 12 \\
+        11 & 13 \\
+    \end{bmatrix}
+\end{equation}
+
+The dimensions of the desired convolution output are defined by:
+
+\begin{equation}
+    (m_S - m_K + 1) \times (n_S - n_K + 1)
+\end{equation}
+
+Note this corresponds to a convolution in "valid" mode, where edge values are truncated.
+
+We transform each column of the kernel into a Toeplitz matrix with the same number of columns as the input signal. This matrix is square, and each value along the diagonals is constant.
+
+\begin{align}
+    T_0 &=
+    \begin{bmatrix}
+        10 & 11 & 0 \\
+        0  & 10 & 11
+    \end{bmatrix} &
+    T_1 &=
+    \begin{bmatrix}
+        12 & 13 & 0 \\
+        0  & 12 & 13
+    \end{bmatrix}
+\end{align}
+
+The convolution of the signal and kernel can now be replaced by a sum of dot products between the signal and filter Toeplitz matrices.
+
+\begin{align}
+    C &= S * K \\
+      &= S \cdot T_0 + S \cdot T_1
+\end{align}
+
+Where $\cdot$ is the matrix dot product operator and $*$ is the convolution operator.
