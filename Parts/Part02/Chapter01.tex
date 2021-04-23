@@ -74,13 +74,11 @@ The first method is inspired by median filtering-based background formation. We 
     B_t[i, j] = median(M_{1, t}, M_{2, t}, ..., M_{R, t})
 \end{equation}
 
-Technical variability (among replicates) is then used to filter out noisy regions. This is done by computing a signal to noise ratio threshold.
-
-We then compute the matrix of absolute variations $V$ between each replicate and their condition's median background. The resulting distribution is used to define a percentile threshold of technical variation.
+We then compute the matrix of squared errors $V$ between each replicate and their condition's median background. This technical variability (among replicates) is then used to filter out noisy regions. This is done by generating a signal-to-noise map and applying on which a threshold is applied.
 
 \begin{align}
-    V_t &= M_{r, t} - B_t \\
-    T &= Q_{V_{t0},V_{t1}}(0.95)
+    V_t &= \sum_{i=1}^r{(M_{i, t} - B_t)^2} \\
+    S &= \frac{1}{t} \sum_{i=0}^t{\frac{B_i}{V_i}}
 \end{align}
 
 The alternative method is to compute a test statistic and associated p-value for every pixel [i,j], and then select contiguous regions of strong changes.
