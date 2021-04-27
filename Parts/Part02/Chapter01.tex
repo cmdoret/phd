@@ -56,7 +56,7 @@ Change detection is a common issue in the field of signal processing and remote 
 
 Change detection in Hi-C contact maps is required whenever we want to identify genomic regions whose spatial organization is altered between two conditions.
 
-Many approaches can be taken to detect these changes. Some of them, such as diffhic, formulate the problem similarly to a differential expression RNAseq analysis using contact counts instead of read counts. This approach has the benefit of being statistically sound and straightforward, but it only finds contact increase. Local increase in contacts can represent a specific spatial interactions, but also differential accessibility or insulation. which could be caused by a number of different phenomenon.
+Many approaches can be taken to detect these changes. Some of them, such as diffhic, formulate the problem similarly to a differential expression RNAseq analysis using contact counts instead of read counts. This approach has the benefit of being straightforward, but it only finds contact increase. Local increase in contacts can represent a specific spatial interactions, but also differential accessibility or insulation. which could be caused by a number of different phenomena.
 
 We developed pareidolia, a software package for change detection with an apriori on the type of signal to detect. The method is "supervised" in the sense that it requires a kernel representing the feature of interest. Pareidolia relies on Chromosight's backend to convert the contact map of each condition into a map of correlation coefficients representing similarity with the feature of interest. Change detection is then performed on these coefficients. As a consequence, rather than looking for contacts increase, pareidolia looks for changes in feature intensity, such as border sharpness or looping intensity.
 
@@ -74,11 +74,18 @@ The first method is inspired by median filtering-based background formation. We 
     B_t[i, j] = median(M_{1, t}, M_{2, t}, ..., M_{R, t})
 \end{equation}
 
-We then compute the matrix of squared errors $V$ between each replicate and their condition's median background. This technical variability (among replicates) is then used to filter out noisy regions. This is done by generating a signal-to-noise map and applying on which a threshold is applied.
+We then compute the matrix of squared errors $V$ between each replicate and their condition's median background. This technical variability (among replicates) is then used to filter out noisy regions. This is done by generating a \acrfull{SNR} map and applying on which a threshold is applied.
 
 \begin{align}
     V_t &= \sum_{i=1}^r{(M_{i, t} - B_t)^2} \\
     S &= \frac{1}{t} \sum_{i=0}^t{\frac{B_i}{V_i}}
 \end{align}
 
-The alternative method is to compute a test statistic and associated p-value for every pixel [i,j], and then select contiguous regions of strong changes.
+Pixels in noisy regions (below the \acrshort{SNR} threshold) are thn removed, and a 95\% quantile threshold can be applied on the resulting pixels.
+
+Pareidolia can either return the change intensity on a set of predetermined loop positions provided as input, or perform \textit{de-novo} detection of differential loops on the Hi-C map. For detection, pareidolia uses Chromosight's implementation of the connected component labelling algorithm for sparse matrices.
+
+An alternative method would be to compute a test statistic and associated p-value for every pixel [i,j], and then select contiguous regions of strong changes.
+
+\subsection{Results on synthetic and biological data}
+

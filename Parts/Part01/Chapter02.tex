@@ -80,14 +80,17 @@ After \acrshort{o/e} normalization, the compartment signal is generally the most
 Many genomes are segmented into \acrshort{TAD}s containing frequently interacting loci, and often co-regulated genes. Regions in separate \acrshort{TAD}s are insulated from each other, and the strength of this insulation can be quantified using an "insulation score". The insulation score of a given region is defined as the intensity of contacts across that region (upstream with downstream) \cite{craneCondensindrivenRemodellingChromosome2015a} and can be represented as a numerical track along the genome. Improved metrics such as the relative insulation score have since been developed to successfully detect \acrshort{TAD}s \cite{chenHiCDBSensitiveRobust2018}. The relative insulation score (RI) at a locus \textit{s} between bins \textit{k} and \textit{k+1} with a predetermined window size \textit{w} is defined as:
 
 \begin{align}
-    \label{eq:01-02:insulation}
+    \label{eq:01-02:insulation-U}
     U(w, s) &= \sum_{i=-w}^{-1}{\sum_{j=0}^{i+1}{M_{k+i,k+j}}} \\
+    \label{eq:01-02:insulation-D}
     D(w, s) &= \sum_{i=-w+1}^{0}{\sum_{j=1}^{w+i}{M_{k+i,k+j}}} \\
+    \label{eq:01-02:insulation-B}
     B(w, s) &= \sum_{i=1}^{w}{\sum_{j=i+1}^{w+1}{M_{k+i,k+j}}} \\
+    \label{eq:01-02:insulation-RI}
     RI(w, s) &= \frac{U(w, s) + D(w, s) - B(w, s)}{U(w, s) + D(w, s) + B(w, s)}
 \end{align}
 
-Where U and D are contacts in the upstream and downstream regions, respectively and B are the contacts between U and D. This can be visually represented as a triangle sliding along the diagonal of the Hi-C matrix (Fig. \ref{fig:01-02:insulation}). By contrast the original insulation score consisted only in computing B (Eq. \ref{eq:01-02:insulation}.3).
+Where U and D are contacts in the upstream and downstream regions, respectively and B are the contacts between U and D. This can be visually represented as a triangle sliding along the diagonal of the Hi-C matrix (Fig. \ref{fig:01-02:insulation}). By contrast the original insulation score consisted only in computing B (Eq. \ref{eq:01-02:insulation-B}).
 
 \begin{figure}[htb]
     \includegraphics[width=\textwidth]{Parts/Part01/gfx/insulation_score_hicdb.jpeg}
