@@ -68,7 +68,7 @@ Assuming two conditions $t={t_0, t_1}$, where multiple samples (replicates) $(r_
 
 Change detection can then be performed on the correlation maps using two different methods.
 
-The first method is inspired by median filtering-based background formation. We start by generating a background matrix for each condition (timepoint), whose values are defined as the median of all replicates in that condition: 
+The first method is inspired by median filtering-based background formation (Fig. \ref{fig:02-01:pareidolia}). We generate a background matrix for each condition (timepoint), whose values are defined as the median of all replicates' correlation matrices from that condition: 
 
 \begin{equation}
     B_t[i, j] = median(M_{1, t}, M_{2, t}, ..., M_{R, t})
@@ -81,7 +81,13 @@ We then compute the matrix of squared errors $V$ between each replicate and thei
     S &= \frac{1}{t} \sum_{i=0}^t{\frac{B_i}{V_i}}
 \end{align}
 
-Pixels in noisy regions (below the \acrshort{SNR} threshold) are thn removed, and a 95\% quantile threshold can be applied on the resulting pixels.
+Pixels in noisy regions (below the \acrshort{SNR} threshold) are then removed, and a 95\% quantile threshold can be applied on the resulting pixels.
+
+\begin{figure}[htb]
+    \includegraphics[width=\textwidth]{Parts/Part02/gfx/pareidolia_process.pdf}
+    \caption{Pareidolia algorigthm. From top to bottom: The Hi-C contact maps of several replicates in two conditions are shown, as well as the difference between conditions. Chromosight's convolution algorithm is used on each sample (1) to generate a map of correlation coefficient with the kernel of interest (loops in this case). For each condition, a median background is computed among replicates (2). The difference between these two background is then extracted (3) and filtered (4) using a \acrshort{SNR} threshold and a percentile threshold.}
+    \label{fig:02-01:pareidolia}
+\end{figure}
 
 Pareidolia can either return the change intensity on a set of predetermined loop positions provided as input, or perform \textit{de-novo} detection of differential loops on the Hi-C map. For detection, pareidolia uses Chromosight's implementation of the connected component labelling algorithm for sparse matrices.
 

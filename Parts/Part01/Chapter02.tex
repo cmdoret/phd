@@ -61,7 +61,7 @@ Each spatial structure formed by chromatin is reflected on the contact map as a 
 	\label{fig:01-02:hic}
 \end{figure}
 
-In many eukaryotes, chromatin is also segregated into active and inactive compartments, commonly known as "euchromatin" and "heterochromatin" or A/B compartments. The A (active) compartment has higher GC content, gene density and gene expression than its counterpart \cite{lieberman-aidenComprehensiveMappingLongRange2009a}. A and B compartments also occupy separate spaces in the nucleus, whereas the A compartment is located towards the middle of the nucleus, the B compartment is relegated to the nuclear periphery and associated with lamina domains \cite{steenselLaminaAssociatedDomainsLinks2017}. This spatial segregation results in preferential physical interactions within the same compartment, which are reflected on Hi-C contact maps by a plaid-like pattern. 
+In many eukaryotes, chromatin is also segregated into active and inactive compartments, commonly known as "euchromatin" and "heterochromatin" or A/B compartments. The A (active) compartment has higher GC content, gene density and gene expression than its counterpart \cite{lieberman-aidenComprehensiveMappingLongRange2009}. A and B compartments also occupy separate spaces in the nucleus, whereas the A compartment is located towards the middle of the nucleus, the B compartment is relegated to the nuclear periphery and associated with lamina domains \cite{vansteenselLaminaAssociatedDomainsLinks2017}. This spatial segregation results in preferential physical interactions within the same compartment, which are reflected on Hi-C contact maps by a plaid-like pattern. 
 
 \subsection{Analysis of chromosome contact maps}
 
@@ -77,7 +77,7 @@ After \acrshort{o/e} normalization, the compartment signal is generally the most
     \label{fig:01-02:compartments}
 \end{figure}
 
-Many genomes are segmented into \acrshort{TAD}s containing frequently interacting loci, and often co-regulated genes. Regions in separate \acrshort{TAD}s are insulated from each other, and the strength of this insulation can be quantified using an "insulation score". The insulation score of a given region is defined as the intensity of contacts across that region (upstream with downstream) \cite{craneCondensindrivenRemodellingChromosome2015a} and can be represented as a numerical track along the genome. Improved metrics such as the relative insulation score have since been developed to successfully detect \acrshort{TAD}s \cite{chenHiCDBSensitiveRobust2018}. The relative insulation score (RI) at a locus \textit{s} between bins \textit{k} and \textit{k+1} with a predetermined window size \textit{w} is defined as:
+Many genomes are segmented into \acrshort{TAD}s containing frequently interacting loci, and often co-regulated genes. Regions in separate \acrshort{TAD}s are insulated from each other, and the strength of this insulation can be quantified using an "insulation score". The insulation score of a given region is defined as the intensity of contacts across that region (upstream with downstream) \cite{craneCondensindrivenRemodellingChromosome2015} and can be represented as a numerical track along the genome. Improved metrics such as the relative insulation score have since been developed to successfully detect \acrshort{TAD}s \cite{chenHiCDBSensitiveRobust2018}. The relative insulation score (RI) at a locus \textit{s} between bins \textit{k} and \textit{k+1} with a predetermined window size \textit{w} is defined as:
 
 \begin{align}
     \label{eq:01-02:insulation-U}
