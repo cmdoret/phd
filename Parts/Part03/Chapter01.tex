@@ -13,6 +13,13 @@
 \section{Reproducibility and reliability challenges}
 % Impact of the reproducibility crisis
 Results from genomics analyses are especially sensitive to the parameters and methods used. This makes reproducibility in bioinformatics of utmost importance. Just like RNAseq, Hi-C has important technical variability which needs to be accounted for using multiple replicates.
+
+It was proposed that RNAseq experiments for differential expression analysis should comprise at least 6 replicates and ideally 12 \cite{schurchHowManyBiological2016}. While this is probably true for most omics experiments, this entails a high cost which is often the limiting factor when designing experiments in genomics.
+
+The core issue with low replicate numbers is the impossibility to distinguish between technical variability due to the assay and biological variability of interest. As a consequence, when fewer replicates are used, lower effect size (fold changes in the case of gene expression) become undetectable. This is especially problematic when studying gene regulation, where small changes in expression can be important.
+
+% Mention beyond p-values ?
+
 % Software quality
 Unlike RNAseq, where the standard for analyses is well established and most softwares are able to account for replicates and experimental design, most softwares available for Hi-C analysis cannot use replicate information. This limits the power of analysis to detect only very strong changes. The lack of standard also causes a general fragmentation of bioinformatic tools, with many redundant tools of variable quality. One recurrent issue is the absence or low quality of unit tests and documentation, which are unfortunately still not regarded as standard in the computational biology community. Unit tests could be viewed as an equivalent to control experiments in molecular biology, as they validate each logic piece of the software using inputs with known truths. Software lacking these controls is more likely to have undetected bugs that could impact results and lead to false conclusion.
 % The importance of standardisation
