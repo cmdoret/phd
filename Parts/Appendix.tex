@@ -2,26 +2,11 @@
 \ctparttext{}
 \part{Appendices}
 
-\chapter{Publications}
- \label{ch:04-A:publications}
-    Articles published in the context of this work are included below.
-
-    \includepdf[
-        pages=-,
-        addtotoc={
-            1,
-            section,
-            3,
-            Computer vision for pattern detection in chromosome contact maps,
-            chromosight_paper
-        }
-    ]{Publications/chromosight_publication_supp.pdf}
-
 \chapter{Supplementary information}
-\label{ch:04-B:supdata}
+\label{ch:04-A:supdata}
 
     \section{Sparse convolution in Chromosight}
-    \label{sec:04-B-01:convolution}
+    \label{sec:04-A-01:convolution}
 
 The explanation below describes how Chromosight reformulates convolution into a matrix multiplication problem to better handle large sparse matrices. The algorithm is inspired from \cite{NeuralNetwork2D}. For brevity, we call the operation "convolution" throughout the section, although cross-correlation could be considered more accurate as we do not transpose the kernel. Let S be the signal (Hi-C) matrix and K the kernel matrix.
 
