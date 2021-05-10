@@ -11,8 +11,8 @@
    inkscape:export-xdpi="150"
    inkscape:export-filename="/home/cyril/pCloudDrive/physalia/workshop/session_1_hic/assets/filters.png"
    width="564.83057mm"
-   height="207.83mm"
-   viewBox="0 0 564.83056 207.83"
+   height="222.10233mm"
+   viewBox="0 0 564.83056 222.10232"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
@@ -626,9 +626,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.1077426"
-     inkscape:cx="-95.857842"
-     inkscape:cy="757.60561"
+     inkscape:zoom="0.90491679"
+     inkscape:cx="901.01782"
+     inkscape:cy="497.00441"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -659,7 +659,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-27.543707,-102.0199)">
+     transform="translate(-27.543707,-87.747573)">
     <path
        inkscape:connector-curvature="0"
        style="fill:none;stroke:#6b8b8b;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#InfiniteLineStart);marker-end:url(#InfiniteLineEnd)"
@@ -737,7 +737,7 @@
     <path
        inkscape:connector-curvature="0"
        style="fill:none;stroke:#f59027;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 314.07444,113.98284 c 0,0 26.23207,-19.713867 51.85102,-6.25474 9.62131,5.05462 24.48346,19.30507 45.14349,10.76288 v 0"
+       d="m 314.07444,124.56618 c 0,0 26.23207,-19.71387 51.85102,-6.25474 9.62131,5.05462 24.48346,19.30507 45.14349,10.76288 v 0"
        id="path3420"
        sodipodi:nodetypes="cscc" />
     <path
@@ -1019,5 +1019,49 @@
        d="m 436.85257,117.85552 c 0,158.04414 0,158.04414 0,158.04414"
        id="path1515"
        inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:16.61222839px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458329"
+       x="27.331598"
+       y="100.36897"
+       id="text1215"><tspan
+         sodipodi:role="line"
+         id="tspan1213"
+         x="27.331598"
+         y="100.36897"
+         style="stroke-width:0.26458329">a</tspan></text>
+    <text
+       id="text1219"
+       y="100.36897"
+       x="143.64053"
+       style="font-style:normal;font-weight:normal;font-size:16.61222839px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458329"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458329"
+         y="100.36897"
+         x="143.64053"
+         id="tspan1217"
+         sodipodi:role="line">b</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:16.61222839px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458329"
+       x="287.63693"
+       y="100.36897"
+       id="text1223"><tspan
+         sodipodi:role="line"
+         id="tspan1221"
+         x="287.63693"
+         y="100.36897"
+         style="stroke-width:0.26458329">c</tspan></text>
+    <text
+       id="text1227"
+       y="100.36897"
+       x="435.80368"
+       style="font-style:normal;font-weight:normal;font-size:16.61222839px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458329"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458329"
+         y="100.36897"
+         x="435.80368"
+         id="tspan1225"
+         sodipodi:role="line">d</tspan></text>
   </g>
 </svg>
