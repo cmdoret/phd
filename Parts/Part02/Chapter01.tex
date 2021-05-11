@@ -22,7 +22,7 @@ In this section we review the recent methodlogical developments that allow to co
 Pre-processing of Hi-C data, to convert \acrfull{NGS} reads into chromosomal contact matrices involves several steps that will impact the resulting signal. The sequencing reads themselves can be the result from religation of two distinct loci (Fig. \ref{fig:02-01:chimeric}). These chimeric reads cannot be aligned reliably with generic methods and need to be cut for proper alignment. Chimeric reads become more problematic when increasing the read size relative to restriction fragment length.
 
 \begin{figure}[htb]
-    \includegraphics[width=\textwidth]{Parts/Part02/gfx/hicstuff/chimeric.pdf}
+    \includegraphics[width=0.8\textwidth]{Parts/Part02/gfx/hicstuff/chimeric.pdf}
     \caption{Chimeric reads in Hi-C: Example of a Hi-C fragment resulting in a chimeric read. The Hi-C fragment contains 3 different regions (green, orange and grey) which have been religated together. The paired-end sequencing reads are shown as dotted line. The sequencing read spanning the green and orange region will be chimeric and not map to a unique region.}
     \label{fig:02-01:chimeric}
 \end{figure}
@@ -41,14 +41,14 @@ This preprocessing is often performed using custom scripts and prone to errors, 
 
 \begin{figure}[htb]
     \includegraphics[width=0.7\textwidth]{Parts/Part02/gfx/hicstuff/pipeline.pdf}
-    \caption{Overview of the hicstuff pipeline: }
+    \caption{Overview of the hicstuff pipeline: Consecutive steps towards the generation of a contact map from sequencing reads, along with the intermediate files are shown as a directed acyclic graph.}
     \label{fig:02-01:pipeline}
 \end{figure}
 
 Hicstuff can properly align chimeric reads, by digesting them \textit{in-silico} at religation sites, or using iterative mapping (Fig. \ref{fig:02-01:iteralign}) where reads are truncated and iteratively extended until they align unambiguously. The Hi-C pairs are then assigned a numerical index according to the restriction they originate from (Fig. \ref{fig:02-01:attribution}) and artifactual contacts are filtered out using the strand information. Contacts in each bin combination are then summed into a "contact matrix", which is stored in sparse format to spare memory. To allow compatibility with various programs, it can generate sparse matrices in 3 possible formats (COO, bedgraph2d and cool).
 
 \begin{figure}[htb]
-    \includegraphics[width=\textwidth]{Parts/Part02/gfx/hicstuff/hic_pipeline_attribution.pdf}
+    \includegraphics[width=0.8\textwidth]{Parts/Part02/gfx/hicstuff/hic_pipeline_attribution.pdf}
     \caption{Fragment attribution of Hi-C contacts: The genome is segmented into discrete bins according to the positions of restriction sites. Hi-C reads are assigned an index according to the restriction fragment to which they aligned.}
     \label{fig:02-01:attribution}
 \end{figure}
@@ -69,8 +69,9 @@ Hicstuff is meant to be easily accessible \cite{matthey-doretSimpleLibraryPipeli
 
 The pipeline also provides reproducibility through an automatic logging of every intermediate result in the pipeline as well as the input parameters used.
 
-The project has already fostered a community of users which are offering their contributions, suggest features or report issues they encounter.
+The project has already fostered a modest community of users which are offering their contributions, suggest features or report issues they encounter.
 
+\FloatBarrier
 \section{Feature detection with Chromosight}
 
 The downstream analysis of chromosome contact maps often involves looking for signals reflecting biologically relevant spatial interactions. Several specialized approaches for pattern detection have been proposed in the past. Each of these methods use a set of specific rules to detect one particular type of pattern. For example, HICCUPS \cite{rao3DMapHuman2014} detects chromatin loops by scanning each pixel of the contact map for contact enrichment compared to surrounding pixels.
@@ -79,13 +80,19 @@ These specialized methods present several drawbacks, including strong dependence
 
 Chromosight uses template matching to identify features on a chromosome contact map. This technique consists in scanning the input Hi-C matrix with a smaller "kernel" image corresponding to the pattern of interest (e.g. a loop) to identify input regions bearing similarity to the kernel. This has the added benefit of allowing to swap the kernel to detect a different feature.
 
-One of the main algorithmic challenges of applying a convolution-based method to Hi-C data is the size of matrices. Hi-C matrices are notoriously large, but they are also extremely sparse (loci do not interact with each other). As a consequence, sparse matrix representation is generally used to handle Hi-C data. In the case of large genomes, such as that of \textit{Homo sapiens}, this is necessary to store an entire chromosome's contact map into a regular computer's memory. One of the main drawbacks of sparse representation is that most algorithms are slower and harder to implement on such matrices. No implementation of convolution for sparse matrices was openly available, which prompted us to write an efficient method to scan the billion of pixels from Hi-C maps in reasonable time. Fortunately, the convolution problem can be reformulated as a matrix multiplication by transforming the input matrices (see \ref{sec:04-A-01:convolution}), and matrix multiplication is a standardized operation that has been highly optimized in low level libraries, including for sparse matrices.
+One of the main algorithmic challenges of applying a convolution-based method to Hi-C data is the size of matrices. Hi-C matrices are notoriously large, but they are also extremely sparse (loci do not interact with each other). As a consequence, sparse matrix representation is generally used to handle Hi-C data (Fig. \ref{fig:02-01:sparse}). In the case of large genomes, such as that of \textit{Homo sapiens}, this is necessary to store an entire chromosome's contact map into a regular computer's memory. One of the main drawbacks of sparse representation is that most algorithms are slower and harder to implement on such matrices. No implementation of convolution for sparse matrices was openly available, which prompted us to write an efficient method to scan the billion of pixels from Hi-C maps in reasonable time. Fortunately, the convolution problem can be reformulated as a matrix multiplication by transforming the input matrices (see \ref{sec:04-A-01:convolution}), and matrix multiplication is a standardized operation that has been highly optimized in low level libraries, including for sparse matrices.
 
 Chromosight is a python package that takes cool files as input. During its development, we put special attention on good software practice mentioned in section \ref{sec:02-01:streamlined-processing} to make it easy to use and accessible. This was done by spending time documenting the python \acrshort{API} and the \acrshort{CLI} as well as putting tutorial examples. Furthermore, the program is covered by a suite of unit tests set up with continuous integration. On every new release, Chromosight is automatically distributed on PyPI, bioconda and dockerhub to accomodate the different use cases and pipelines.
 
 Chromosights algorithm, results and benchmark against state of the art loop detection methods are presented in details in the following pages. The algorithmic details used to tackle the sparse convolution problem are presented in section \ref{sec:04-A-01:convolution}.
 
-\includepdf[ pages=-]{Publications/chromosight_publication_supp.pdf}
+\includepdf[pages=-,addtotoc={
+     2,subsection,2,Introduction,p1,   
+     3,subsection,2,Results,p2,
+     8,subsection,2,Discussion,p3,
+     8,subsection,2,Methods,p4,
+     12,subsection,2,Supplementary information,p5}]
+     {Publications/chromosight_publication_supp.pdf}    
 
 \section{Change detection across biological conditions}
 
@@ -99,9 +106,9 @@ We developed pareidolia, a software package for change detection with an apriori
 
 \subsection{Pareidolia algorithm}
 
-Pareidolia works by comparing one or several samples issued from two or more conditions such as treatments or timepoints.
+Pareidolia works by comparing one or several samples issued from two conditions such as treatments or timepoints.
 
-Assuming two conditions $t={t_0, t_1}$, where multiple samples (replicates) $(r_1, r_2, ..., r_R)$ can share the same condition. The contact matrix from each sample $H_{r, t}$ is first convoluted with a kernel $K$ representing the pattern of interest, using Chromosight's \acrshort{API}. In the resulting matrix $M$, each value $M_{r, t}[i, j]$ is a Pearson correlation coefficient with the kernel. $M$ is computed as described in equation...
+Assuming two conditions $t={t_0, t_1}$, where multiple samples (replicates) $(r_1, r_2, ..., r_R)$ can share the same condition. The contact matrix from each sample $H_{r, t}$ is first convoluted with a kernel $K$ representing the pattern of interest, using Chromosight's \acrshort{API}. In the resulting matrix $M$, each value $M_{r, t}[i, j]$ is a Pearson correlation coefficient with the kernel. $M$ is computed as described in equation
 
 Change detection can then be performed on the correlation maps using two different methods.
 
