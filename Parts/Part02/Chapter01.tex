@@ -112,20 +112,23 @@ Assuming two conditions $t={t_0, t_1}$, where multiple samples (replicates) $(r_
 
 Change detection can then be performed on the correlation maps using two different methods.
 
-The first method is inspired by median filtering-based background formation (Fig. \ref{fig:02-01:pareidolia}). We generate a background matrix for each condition (timepoint), whose values are defined as the median of all replicates' correlation matrices from that condition: 
+The first method is inspired by median filtering-based background formation (Fig. \ref{fig:02-01:pareidolia}). We generate a background matrix for each condition (timepoint), whose values are defined as the median of all replicates' correlation matrices from that condition (Eq. \ref{eqn:02-01:pareidolia-bg}) 
 
 \begin{equation}
-    B_t[i, j] = median(M_{1, t}, M_{2, t}, ..., M_{R, t})
+    \label{eqn:02-01:pareidolia-bg}
+    B_t[i, j] = median(M_{1, t}[i, j], M_{2, t}[i, j], ..., M_{R, t}[i, j])
 \end{equation}
 
-We then compute the matrix of squared errors $V$ between each replicate and their condition's median background. This technical variability (among replicates) is then used to filter out noisy regions. This is done by generating a \acrfull{SNR} map and applying on which a threshold is applied.
+We then compute the matrix of squared errors $V$ between each replicate and their condition's median background (Eq. \ref{eqn:02-01:pareidolia-sse}). This technical variability (among replicates) is then used to filter out noisy regions. This is done by generating a \acrfull{SNR} map $S$ (Eq. \ref{eqn:02-01:pareidolia-snr}) and applying a threshold to it.
 
 \begin{align}
+    \label{eqn:02-01:pareidolia-sse}
     V_t &= \sum_{i=1}^r{(M_{i, t} - B_t)^2} \\
+    \label{eqn:02-01:pareidolia-snr}
     S &= \frac{1}{t} \sum_{i=0}^t{\frac{B_i}{V_i}}
 \end{align}
 
-Pixels in noisy regions (below the \acrshort{SNR} threshold) are then removed, and a 95\% quantile threshold can be applied on the resulting pixels.
+Pixels in noisy regions (below the \acrshort{SNR} threshold) are then removed. To further reduce false detections, a density filter can be applied to discard detections located in low coverage regions. If a kernel of size $K$ was used for detection, the proportion of nonzero values within a window of size $K$ surrounding each position must be above a threshold to be considered.
 
 \begin{figure}[htb]
     \includegraphics[width=\textwidth]{Parts/Part02/gfx/pareidolia_process.pdf}
@@ -135,16 +138,14 @@ Pixels in noisy regions (below the \acrshort{SNR} threshold) are then removed, a
 
 Pareidolia can either return the change intensity on a set of predetermined loop positions provided as input, or perform \textit{de-novo} detection of differential loops on the Hi-C map. For detection, pareidolia uses Chromosight's implementation of the connected component labelling algorithm for sparse matrices.
 
-An alternative method is to compute a test statistic and associated p-value for every pixel [i,j], and then select contiguous regions of strong changes.
-
 \subsection{Results on experimental data}
 
-To qualitatively assess the performances of Pareidolia, we used it to measure loop changes upon depletion of CTCF in murine cells \cite{noraTargetedDegradationCTCF2017}. CTCF acts as a roadblock for the motor protein cohesin which travels along the chromatin fiber. Cohesin accumulates at CTCF binding sites which forms stable chromatin loops between pairs of CTCF binding sites.
+To showcase the performances of Pareidolia, we used it to measure loop changes upon depletion of CTCF in murine cells \cite{noraTargetedDegradationCTCF2017}. CTCF acts as a roadblock for the motor protein cohesin which travels along the chromatin fiber. Cohesin accumulates at CTCF binding sites which forms stable chromatin loops between pairs of CTCF binding sites.
 
 These looping interactions have been shown to disappear in the absence of cohesin \cite{raoCohesinLossEliminates2017} or CTCF \cite{noraTargetedDegradationCTCF2017}. Here we show an example use of Pareidolia to quantify these 3D changes.
 
 \begin{figure}[htb]
     \includegraphics[width=\textwidth]{Parts/Part02/gfx/pareidolia/ctcf_depletion_comparison_maps_chr1_55Mb.pdf}
-    \caption{Pareidolia results on CTCF degradation experiments from \cite{noraTargetedDegradationCTCF2017}}
+    \caption{Pareidolia results on CTCF degradation experiments from \cite{noraTargetedDegradationCTCF2017}: Blue circles indicate detection of differential loops between the two conditions.}
     \label{fig:02-01:pareidolia-experimental}
 \end{figure}
