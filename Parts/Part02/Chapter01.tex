@@ -140,12 +140,16 @@ Pareidolia can either return the change intensity on a set of predetermined loop
 
 \subsection{Results on experimental data}
 
-To showcase the performances of Pareidolia, we used it to measure loop changes upon depletion of CTCF in murine cells \cite{noraTargetedDegradationCTCF2017}. CTCF acts as a roadblock for the motor protein cohesin which travels along the chromatin fiber. Cohesin accumulates at CTCF binding sites which forms stable chromatin loops between pairs of CTCF binding sites.
+To showcase the performances of Pareidolia, we used it to measure loop changes upon depletion of CTCF in murine cells using published data \cite{noraTargetedDegradationCTCF2017}. CTCF acts as a roadblock for the motor protein cohesin which travels along the chromatin fiber. Cohesin accumulates at CTCF binding sites, forming stable chromatin loops between pairs of CTCF binding sites.
 
 These looping interactions have been shown to disappear in the absence of cohesin \cite{raoCohesinLossEliminates2017} or CTCF \cite{noraTargetedDegradationCTCF2017}. Here we show an example use of Pareidolia to quantify these 3D changes.
 
+The dataset used here consists of CTCF-AID mutant mouse embryonic embryonic stem cells (ES-E14TG2a). When auxin treatment is applied, the CTCF-AID recombinant protein is degraded. We use pareidolia to compare chromatin loops before and after auxin treatments, using all 4 samples (2 replicates per condition).
+
+With default parameters, pareidolia identifies a total of 2997 disappearing differential loops and 845 appearing loops (Fig. \ref{fig:02-01:pareidolia-experimental}).
+
 \begin{figure}[htb]
-    \includegraphics[width=\textwidth]{Parts/Part02/gfx/pareidolia/ctcf_depletion_comparison_maps_chr1_55Mb.pdf}
-    \caption{Pareidolia results on CTCF degradation experiments from \cite{noraTargetedDegradationCTCF2017}: Blue circles indicate detection of differential loops between the two conditions.}
+    \includegraphics[width=\textwidth]{Parts/Part02/gfx/pareidolia/ctcf_depletion_scores_genome.pdf}
+    \caption{Pareidolia results on CTCF degradation experiments from \cite{noraTargetedDegradationCTCF2017}: \textbf{a:} Distribution of chromatin loop change and size upon CTCF depletion as detected by pareidolia. \textbf{b:} Zoom on a region of the Hi-C map from mouse chromosome 1. Disappearing loops detected by pareidolia are highlighted in blue. For visualization purpose, replicates were merged in Hi-C matrices shown. Processed data retrieved from \url{https://data.4dnucleome.org}, accessions 4DNES87HWQAX and 4DNES7UKQHOX.}
     \label{fig:02-01:pareidolia-experimental}
 \end{figure}
