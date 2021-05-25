@@ -28,7 +28,7 @@ Many levels of regulation allow to fine tune gene expression in eukaryote (Fig. 
 
 \begin{figure}
     \includegraphics[width=\textwidth]{Parts/Part01/gfx/transcriptional_regulation_levels.pdf}
-    \caption{Regulation of transcription in eukaryotic cells. Visual summary of the different levels at which transcription can be regulated. At the largest scale (1), the chromatin environment can form structures affecting transcription. The open space between nucleosome can also affect accessibility of protein complexes to gene sequences (2). Chemical modifications on histone proteins form an epigenetic code defining the recruitment of transcriptional complexes on the genome (3). The availablity of those factors (4) and the proximity of regulatory sequences such as enhancers (5) provide another level of transciptional regulation. Reprinted from “Regulation of Transcription in Eukaryotic Cells”, by BioRender.com (2020). Retrieved from https://app.biorender.com/biorender-templates }
+    \caption[Regulation of transcription in eukaryotic cells.]{Regulation of transcription in eukaryotic cells. Visual summary of the different levels at which transcription can be regulated. At the largest scale (1), the chromatin environment can form structures affecting transcription. The open space between nucleosome can also affect accessibility of protein complexes to gene sequences (2). Chemical modifications on histone proteins form an epigenetic code defining the recruitment of transcriptional complexes on the genome (3). The availablity of those factors (4) and the proximity of regulatory sequences such as enhancers (5) provide another level of transciptional regulation. Reprinted from “Regulation of Transcription in Eukaryotic Cells”, by BioRender.com (2020). Retrieved from https://app.biorender.com/biorender-templates }
     \label{fig:01-02:transcriptional-regulation}
 \end{figure}
 
@@ -43,7 +43,7 @@ The use of genomics to investigate the three-dimensional organisation of the gen
 
 \begin{figure}[htb]
     \includegraphics[width=\textwidth]{Parts/Part01/gfx/3c_protocol.pdf}
-    \caption{Chromosome conformation capture protocol: Chromosome conformation capture protocol share common steps (top): The chromatin is first crosslinked to form covalent DNA-protein bonds and then digested using a restriction enzyme. The Hi-C protocol subsequently differs from the original 3C protocol. In 3C (left), fragments are religated, the crosslinked is reversed and specific primers are added to amplify a pair of known loci. This allows to quantify interaction between 2 loci. In Hi-C (right), the fragments ends are filled with biotinylated nucleotides (pink), religated and the crosslinked is reversed. Streptavidin beads are then used to pull down religation products which are then sequenced.}
+    \caption[Chromosome conformation capture protocol.]{Chromosome conformation capture protocol: Chromosome conformation capture protocol share common steps (top): The chromatin is first crosslinked to form covalent DNA-protein bonds and then digested using a restriction enzyme. The Hi-C protocol subsequently differs from the original 3C protocol. In 3C (left), fragments are religated, the crosslinked is reversed and specific primers are added to amplify a pair of known loci. This allows to quantify interaction between 2 loci. In Hi-C (right), the fragments ends are filled with biotinylated nucleotides (pink), religated and the crosslinked is reversed. Streptavidin beads are then used to pull down religation products which are then sequenced.}
 	\label{fig:01-02:3c}
 \end{figure}
 
@@ -57,7 +57,7 @@ Each spatial structure formed by chromatin is reflected on the contact map as a 
 
 \begin{figure}[htb]
     \includegraphics[width=\textwidth]{Parts/Part01/gfx/hic_interpretation.pdf}
-    \caption{Interpretation of Hi-C contact maps: \textbf{a}: The Hi-C protocol (left) generates millions of read pairs representing contacts between genomic loci in a population of cells. Those contacts can be stored into an all-versus-all contact matrix (right) averaging all contacts in the population. Each chromosome in the matrix forms a square of strong self-interactions along the diagonal due to chromosomal territories. \textbf{b:} Within each chromosomal map, different contact patterns reflect specific conformations (right). The main feature of a contact map is the diagonal gradient (top) caused by the contact decay according to genomic distances. Chromatin loops between two anchor loci are visible as dots away from the diagonal (middle). Insulation domains form squares along the diagonal of a chromosome where loci within the same domain interact strongly, but interactions between domains are depleted}
+    \caption[Interpretation of Hi-C contact maps.]{Interpretation of Hi-C contact maps: \textbf{a}: The Hi-C protocol (left) generates millions of read pairs representing contacts between genomic loci in a population of cells. Those contacts can be stored into an all-versus-all contact matrix (right) averaging all contacts in the population. Each chromosome in the matrix forms a square of strong self-interactions along the diagonal due to chromosomal territories. \textbf{b:} Within each chromosomal map, different contact patterns reflect specific conformations (right). The main feature of a contact map is the diagonal gradient (top) caused by the contact decay according to genomic distances. Chromatin loops between two anchor loci are visible as dots away from the diagonal (middle). Insulation domains form squares along the diagonal of a chromosome where loci within the same domain interact strongly, but interactions between domains are depleted}
 	\label{fig:01-02:hic}
 \end{figure}
 
@@ -73,7 +73,7 @@ After \acrshort{o/e} normalization, the compartment signal is generally the most
 
 \begin{figure}[htb]
     \includegraphics[width=0.95\textwidth]{Parts/Part01/gfx/hic_pca_compartments.pdf}
-    \caption{Representation and analysis of chromatin compartments in Hi-C. \textbf{a:} \acrfull{o/e} normalization is applied to the balanced contact map to remove the distance-decay gradient. Higher frequency of interactions within the same compartment result in a plaid-like pattern on chromosome contact maps. \textbf{b:} PCA is applied to the \acrshort{o/e} normalized contact map and the first few principal coponents (PC) are retained. For visualization, each PC is shown alongside with its outer, yielding the rank-1 reconstruction of the contact map. The outer product matrix is binarized (negative=blue, positive=red) to show the compartmentalization. \textbf{c:} The correlation of each PC with GC content is computed, to select the PC with the highest absolute correlation. \textbf{d:} The sign of PCs being meaningless, the selected PC is phased (by changing its sign in case of negative correlation) to ensure positive values represent A compartment.}
+    \caption[Representation and analysis of chromatin compartments in Hi-C.]{Representation and analysis of chromatin compartments in Hi-C. \textbf{a:} \acrfull{o/e} normalization is applied to the balanced contact map to remove the distance-decay gradient. Higher frequency of interactions within the same compartment result in a plaid-like pattern on chromosome contact maps. \textbf{b:} PCA is applied to the \acrshort{o/e} normalized contact map and the first few principal coponents (PC) are retained. For visualization, each PC is shown alongside with its outer, yielding the rank-1 reconstruction of the contact map. The outer product matrix is binarized (negative=blue, positive=red) to show the compartmentalization. \textbf{c:} The correlation of each PC with GC content is computed, to select the PC with the highest absolute correlation. \textbf{d:} The sign of PCs being meaningless, the selected PC is phased (by changing its sign in case of negative correlation) to ensure positive values represent A compartment.}
     \label{fig:01-02:compartments}
 \end{figure}
 
@@ -94,7 +94,7 @@ Where U and D are contacts in the upstream and downstream regions, respectively 
 
 \begin{figure}[htb]
     \includegraphics[width=\textwidth]{Parts/Part01/gfx/insulation_score_hicdb.jpeg}
-    \caption{Visual illustration of the relative insulation score. Computing the relative insulation score at bin k involves computing the average interactions between upstream (U) and downstream (D) regions, denoted as B, as well as the average contacts within U and B. The key parameter when computing insulation is the window size (w), determining the size of the U, B and D. Figure adapted from \cite{chenHiCDBSensitiveRobust2018}}
+    \caption[Visual illustration of the relative insulation score.]{Visual illustration of the relative insulation score. Computing the relative insulation score at bin k involves computing the average interactions between upstream (U) and downstream (D) regions, denoted as B, as well as the average contacts within U and B. The key parameter when computing insulation is the window size (w), determining the size of the U, B and D. Figure adapted from \cite{chenHiCDBSensitiveRobust2018}}
     \label{fig:01-02:insulation}
 \end{figure}
 
@@ -111,7 +111,7 @@ The central dogma of biology - "DNA makes RNA and RNA makes protein" - describes
 
 \begin{figure}[htb]
     \includegraphics[width=0.8\textwidth]{Parts/Part01/gfx/central_dogma_regulation.pdf}
-    \caption{Central dogma of molecular biology. Products and reactions from the central dogma are shown in green, with grey arrows showing some of the regulatory interactions between the different biomolecules.}
+    \caption[Central dogma of molecular biology.]{Central dogma of molecular biology. Products and reactions from the central dogma are shown in green, with grey arrows showing some of the regulatory interactions between the different biomolecules.}
     \label{fig:01-02:central-dogma}
 \end{figure}
 

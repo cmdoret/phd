@@ -26,7 +26,7 @@ The goal of an assembler is to generate a highly contiguous genome sequence from
 
 \begin{figure}
 \includegraphics[width=\textwidth]{Parts/Part01/gfx/debruijn.pdf}
-\caption{Graphs in genome assembly: A small circular genome is sequenced and the resulting reads are shown in color \textbf{a}: Early assembling techniques computed all pairwise alignments between reads to represent them as nodes in an overlap graph and their overlaps as edges. The genome sequence can be retrieved by finding a path going through each read exactly once. \textbf{b}: Modern assemblers first split reads into their constituent k-mers and represent the k-mers as edges in a de Bruijn graph where nodes are the k-1 overlap between two k-mers located in the same read. The path going through each edge once is computed to solve the graph. K-mers are extracted from the edges visited to retrieve the genome sequence. Adapted from \cite{compeauHowApplyBruijn2011}}
+\caption[Graphs in genome assembly.]{Graphs in genome assembly: A small circular genome is sequenced and the resulting reads are shown in color \textbf{a}: Early assembling techniques computed all pairwise alignments between reads to represent them as nodes in an overlap graph and their overlaps as edges. The genome sequence can be retrieved by finding a path going through each read exactly once. \textbf{b}: Modern assemblers first split reads into their constituent k-mers and represent the k-mers as edges in a de Bruijn graph where nodes are the k-1 overlap between two k-mers located in the same read. The path going through each edge once is computed to solve the graph. K-mers are extracted from the edges visited to retrieve the genome sequence. Adapted from \cite{compeauHowApplyBruijn2011}}
 \label{fig:01-03:debruijn}
 \end{figure}
 
@@ -38,7 +38,7 @@ A growing number of genome assemblies combine several of these different technol
 
 \begin{figure}[htb]
     \includegraphics[width=\textwidth]{Parts/Part01/gfx/assembly_pipeline.pdf}
-    \caption{Example of a typical assembly pipeline using third generation sequencing. The error prone long reads are first corrected by pairwise comparisons. The corrected reads are assembled into contigs using their overlaps. The remaining sequencing errors in the assembly are removed by polishing with accurate short reads. Other sources of information can then be used to combine contigs into scaffolds.}
+    \caption[Example of a third generation sequencing assembly pipeline.]{Example of a typical assembly pipeline using third generation sequencing. The error prone long reads are first corrected by pairwise comparisons. The corrected reads are assembled into contigs using their overlaps. The remaining sequencing errors in the assembly are removed by polishing with accurate short reads. Other sources of information can then be used to combine contigs into scaffolds.}
     \label{fig:01-03:assembly}
 \end{figure}
 
@@ -51,7 +51,7 @@ A common way to analyze the genome of new microorganisms is to compare it to oth
 
 \begin{figure}[htb]
     \includegraphics[width=\textwidth]{Parts/Part01/gfx/phylo_hgt.pdf}
-    \caption{Phylogenetic representation of an HGT event. \textbf{a:} An HGT event between two species (shown with a green arrow) can be detected through discrepencies between the species (left) and gene (right) trees. \textbf{b:} In cases where genomes of closely related species are unavailable (greyed out organisms), the origin of the horizontal transfer cannot be accurately inferred (possible events shown with grey arrows).}
+    \caption[Phylogenetic representation of an HGT event.]{Phylogenetic representation of an HGT event. \textbf{a:} An HGT event between two species (shown with a green arrow) can be detected through discrepencies between the species (left) and gene (right) trees. \textbf{b:} In cases where genomes of closely related species are unavailable (greyed out organisms), the origin of the horizontal transfer cannot be accurately inferred (possible events shown with grey arrows).}
     \label{fig:01-03:phylo-hgt}
 \end{figure}
 
