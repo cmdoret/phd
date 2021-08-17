@@ -21,7 +21,7 @@ jobs:
       - name: Glossary main
         uses: dante-ev/latex-action@latest
         with:
-          root_file: my-thesis.aux
+          root_file: my-thesis
           compiler: makeglossaries
           args: 
       - name: pdflatex main
