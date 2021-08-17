@@ -24,9 +24,12 @@ jobs:
           root_file: my-thesis.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date '+%Y-%m-%d')"
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: my-thesis.pdf
-          name: $(date "+%Y%m%d")
+          name: ${{ steps.date.outputs.date }}
