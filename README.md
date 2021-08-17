@@ -6,3 +6,5 @@ This is based on the cleanthesis style, hosted at: https://github.com/derric/cle
 
 To compile the thesis into a pdf file, simply run `make`. The precompiled pdf is available in releases.
 
+Code and analyses associated with this thesis is available on the following repositories:
+
