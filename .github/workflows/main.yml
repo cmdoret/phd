@@ -18,6 +18,12 @@ jobs:
           root_file: my-thesis.aux
           compiler: bibtex
           args: 
+      - name: Glossary main
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: my-thesis.aux
+          compiler: makeglossaries
+          args: 
       - name: pdflatex main
         uses: dante-ev/latex-action@latest
         with:
