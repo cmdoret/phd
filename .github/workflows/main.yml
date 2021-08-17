@@ -26,6 +26,7 @@ jobs:
           args: -interaction=nonstopmode -shell-escape
       - name: Release
         uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: my-thesis.pdf
           name: $(date "+%Y%m%d")
