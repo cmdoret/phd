@@ -8,38 +8,17 @@
 
 Legionella pneumophila alters its host signal transduction, metabolism and gene regulation upon infection. In addition to all these changes, it also affects host histone marks, which are known to be related to gene regulation and genome architecture. In this chapter, we investigate the genome structure of \textit{A. castellanii} and how it is affected during infection by \textit{L. pneumophila}.
 
+Several strains of \textit{A. castellanii} have been isolated throughout history.These strains may originate from different ecological niche of geographical location and have been cultivated in labs for long preriods. As a result, they can differ in various phenotypes, including susceptibility to infection. Comparing such divergent strains can also help us understand what genomic features are important for pathogen susceptibility.
+
+As with most other genomics techniques, a prerequisite of Hi-C analyses is to have a high quality reference genome with clearly delimited chromosomes. At the time of writing, the A. castellanii reference genome is split into 384 scaffolds which do not represent chromosomes.
+
+This prompted us to generate a chromosome-level genome assembly for two strains of \textit{A. castellanii}: The Neff strain \cite{neffPurificationAxenicCultivation1957}, which is the reference strain for genomic analyses in that species, and the C3 strain \cite{michelIsolationAcanthamoebaStrain1997}, which is generally used for infection experiments with \textit{L. pneumophila} due to higher infection rates. In the following manuscript, we describe and compare the genomic landscape of both strains, as well as the spatial organization of their genomes. We also investigate changes happening in the 3D genome organization in response to infection by \textit{L. pneumophila}.
 
 \includepdf[pages=-,addtotoc={
-     1,subsection,2,Introduction,p1,   
-     2,subsection,2,Results,p2,
-     7,subsection,2,Discussion,p3,
-     7,subsection,2,Methods,p4}]
+     1,section,1,Regulation of the \textit{A. castellanii} genome upon infection,p1,
+     1,subsection,2,Introduction,p2,
+     2,subsection,2,Results,p3,
+     7,subsection,2,Discussion,p4,
+     7,subsection,2,Methods,p5}]
      {Publications/acastellanii_legionella_manuscript.pdf}    
 
-\section{Genome assembly}
-
-As with most other genomics techniques, a prerequisite of Hi-C analyses is to have a high quality reference genome with clearly delimited chromosomes. At the time of writing, the A. castellanii reference genome is split into 384 scaffolds which do not represent chromosomes. This prompted us to generate a chromosome-level genome assembly.
-
-\section{Genome architecture of \textit{A. castellanii}}
-
-The genome of \textit{A. castellanii} is 45Mbp long and pulsed field gel electrophoresis experiments suggested that it has around 20 chromosomes \cite{rimmResolutionAcanthamoebaCastellanii1988}. The 5S ribosomal DNAs are dispered throughout all chromosomes, unlike in most species, where they are clustered in tandem repeats.
-
-\section{Strains comparison}
-
-Several strains of \textit{A. castellanii} have been isolated throughout history.These strains may originate from different ecological niche of geographical location and have been cultivated in labs for long preriods. As a result, they can differ in various phenotypes, including susceptibility to infection. Comparing such divergent strains can help us understand what genomic features are important for pathogen susceptibility.
-
-
-\section{Changes during infection}
-
-\begin{figure}[b]
-    \includegraphics[width=\textwidth]{Parts/Part02/gfx/acastellanii_interchrom.pdf}
-    \caption[Interchromosomal contacts changes during infection by \textit{Legionella}.]{Interchromosomal contacts changes during infection by \textit{Legionella}: \textbf{a:} Whole genome contact map of \textit{A. castellanii str. C3} and log ratio map of \textit{L. pneumophila}-infected over control. Green lines delimit scaffolds. \textbf{b:} Mean contact changes during infection between all pairs of chromosomes before (left) and after(right) clustering chromosomes.}
-	\label{fig:02-02:inter-infection}
-\end{figure}
-
-
-\begin{figure}[b]
-    \includegraphics[width=\textwidth]{Parts/Part02/gfx/acastellanii_telomeres.pdf}
-    \caption[Telomeric interactions changes during infection by \textit{Legionella}.]{Telomeric interactions changes during infection by \textit{Legionella}: \textbf{a:} Illustration of the extraction process for inter-telomeric contact from two chromosomes. All telomeric windows are  into a pileup for a given chromosome and the ratio between infected (I) and uninfected (U) pileups can be visualised. Change in telomeric pattern intensity during infection for all pairs of chromosomes. The intensity is the Pearson correlation coefficient between the telomeric pileup and each telomeric window. Each value in the matrix represents a pair of chromosome, consisting of the average of 4 telomeric windows. Intrachromosomal windows are excluded. \textbf{b:} Telomeric contacts ratio for all chromosomes. For each chromosome, the pileup contains the windows of its telomeric interactions with all other chromosomes.}
-	\label{fig:02-02:telo-infection}
-\end{figure}
