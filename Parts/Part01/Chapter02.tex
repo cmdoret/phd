@@ -42,7 +42,8 @@ Although DNA is a linear (or circular) molecule, it can fold back on itself and 
 The use of genomics to investigate the three-dimensional organisation of the genome started with the invention of \acrfull{3C} \cite{dekkerCapturingChromosomeConformation2002}. This technique allowed to measure the frequency of physical interactions a pair of loci (Fig. \ref{fig:01-02:3c}). This is done by crosslinking the genome with formaldehyde, which forms stable bonds between DNA and proteins, and subsequently digesting the genome with a restriction enzyme. Genomic regions closer in space will be crosslinked together more frequently, resulting in pairs or complexes of chromatin fragments from different genomic regions that were spatially interacting. The digested genome is then religated. Loci which are closer in space are religated more often with each other in the population of cells. The crosslink is then reverted and primers from two regions of interest are added to perform qPCR. This allows to measure the quantity of religated products containing the two loci of interest. Thus, 3C allows to quantify the spatial proximity between two known genomic loci.
 
 \begin{figure}[htb]
-    \includegraphics[width=\textwidth]{Parts/Part01/gfx/3c_protocol.pdf}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Parts/Part01/gfx/3c_protocol.pdf}
     \caption[Chromosome conformation capture protocol.]{Chromosome conformation capture protocol: Chromosome conformation capture protocols share common steps (top): The chromatin is first crosslinked to form covalent DNA-protein bonds and then digested using a restriction enzyme. The Hi-C protocol subsequently differs from the original 3C protocol. In 3C (left), fragments are religated, the crosslinked is reversed and specific primers are added to amplify a pair of known loci. This allows to quantify interaction between 2 loci. In Hi-C (right), the fragments ends are filled with biotinylated nucleotides (pink), religated and the crosslinked is reversed. Streptavidin beads are then used to pull down religation products which are then sequenced.}
 	\label{fig:01-02:3c}
 \end{figure}
@@ -56,7 +57,8 @@ The various folding structures formed by chromatin are created by DNA binding pr
 Each spatial structure formed by chromatin is reflected on the contact map as a distinct pattern (Fig. \ref{fig:01-02:hic}b). At the largest scale, chromosomes are isolated from each other in the nucleus, occupying distinct "chromosome territories". This is reflected as dark squares along the diagonal of the whole genome contact map as each chromosome interacts more with itself than any other chromosome (Fig. \ref{fig:01-02:hic}a). Within each chromosome chromatin forms "insulation domains", known as \acrfull{TAD} in mammals. Genes sharing the same domain are in close proximity, while being isolated from genes in neighbouring domains . Genes within the same domain also tend to be co-regulated \cite{noraSpatialPartitioningRegulatory2012}. Domains form dark squares along the diagonal of a chromosome, due to the enriched intra-domain interactions at the expense of inter-domain contacts (Fig. \ref{fig:01-02:hic}b, bottom). At a finer scale, chromatin loops are visible on contact maps as dots away from the diagonal (Fig. \ref{fig:01-02:hic}b, middle). The coordinates of those dots correspond to the genomic positions of roadblocks which stopped the extrusion process.
 
 \begin{figure}[htb]
-    \includegraphics[width=\textwidth]{Parts/Part01/gfx/hic_interpretation.pdf}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Parts/Part01/gfx/hic_interpretation.pdf}
     \caption[Interpretation of Hi-C contact maps.]{Interpretation of Hi-C contact maps: \textbf{a}: The Hi-C protocol (left) generates millions of read pairs representing contacts between genomic loci in a population of cells. Those contacts can be stored into an all-versus-all contact matrix (right) averaging all contacts in the population. Each chromosome in the matrix forms a square of strong self-interactions along the diagonal due to chromosomal territories. \textbf{b:} Within each chromosomal map, different contact patterns reflect specific conformations (right). The main feature of a contact map is the diagonal gradient (top) caused by the contact decay according to genomic distances. Chromatin loops between two anchor loci are visible as dots away from the diagonal (middle). Insulation domains form squares along the diagonal of a chromosome where loci within the same domain interact strongly, but interactions between domains are depleted.}
 	\label{fig:01-02:hic}
 \end{figure}
@@ -71,8 +73,9 @@ Due to the high intensity of this gradient, other patterns of biological relevan
 
 After \acrshort{o/e} normalization, the compartment signal is generally the most salient feature on the contact maps. It can be extracted using \acrfull{PCA} on the normalized contact map \cite{lajoieHitchhikerGuideHiC2015} and retrieving the first few eigenvectors (i.e. principal component) explaining the most variance (Fig. \ref{fig:01-02:compartments}b). In some cases where the compartment signal is weak (e.g. noisy datasets), it may not be contained in the first eigenvector. A robust approach is to select the eigenvector with the strongest absolute correlation to an external signal known to be associated with active chromatin, such as gene expression or GC content \cite{sergeyvenevOpen2cCooltoolsV02021} (Fig. \ref{fig:01-02:compartments}c). The sign of the eigenvector is arbitrary, and it must be "phased" with the feature by flipping its sign to ensure a positive correlation with the said feature. In the phased vector, regions in the A compartment will contain positive values and \textit{vice versa}. The positions at which the sign changes are boundaries between different compartments (Fig. \ref{fig:01-02:compartments}d).
 
-\begin{figure}[htb]
-    \includegraphics[width=0.95\textwidth]{Parts/Part01/gfx/hic_pca_compartments.pdf}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.90\textwidth]{Parts/Part01/gfx/hic_pca_compartments.pdf}
     \caption[Representation and analysis of chromatin compartments in Hi-C.]{Representation and analysis of chromatin compartments in Hi-C. \textbf{a:} \acrfull{o/e} normalization is applied to the balanced contact map to remove the distance-decay gradient. Higher frequency of interactions within the same compartment result in a plaid-like pattern on chromosome contact maps. \textbf{b:} PCA is applied to the \acrshort{o/e} normalized contact map and the first few principal components (PC) are retained. For visualization, each PC is shown alongside its outer product, yielding the rank-1 reconstruction of the contact map. The outer product matrix is binarized (negative=blue, positive=red) to show the compartmentalization. \textbf{c:} The correlation of each PC with GC content is computed, to select the PC with the highest absolute correlation. \textbf{d:} The sign of PCs being meaningless, the selected PC is phased (by changing its sign in case of negative correlation) to ensure positive values represent A compartment.}
     \label{fig:01-02:compartments}
 \end{figure}
@@ -93,7 +96,8 @@ Many genomes are segmented into \acrshort{TAD}s containing frequently interactin
 Where U and D are contacts in the upstream and downstream regions respectively, and B are the contacts between U and D. This can be visually represented as a triangle sliding along the diagonal of the Hi-C matrix (Fig. \ref{fig:01-02:insulation}). By contrast the original insulation score consisted only in computing B (Eq. \ref{eqn:01-02:insulation-B}).
 
 \begin{figure}[htb]
-    \includegraphics[width=\textwidth]{Parts/Part01/gfx/insulation_score_hicdb.pdf}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Parts/Part01/gfx/insulation_score_hicdb.pdf}
     \caption[Visual illustration of the relative insulation score.]{Visual illustration of the relative insulation score. Computing the relative insulation score at bin k involves computing the average interactions between upstream (U) and downstream (D) regions, denoted as B, as well as the average contacts within U and B. The key parameter when computing insulation is the window size (w), determining the size of the U, B and D. Figure adapted from \cite{chenHiCDBSensitiveRobust2018}}
     \label{fig:01-02:insulation}
 \end{figure}
@@ -110,6 +114,7 @@ Rather than computing a single metric for each sample, most applications of Hi-C
 The central dogma of biology - "DNA makes RNA and RNA makes protein" - describes a linear set of reactions carrying the flow of information in living organisms. It is now known that these reactions by themselves are hardly sufficient to explain the complexity of biological processes. The fine tuning required for proper regulation is achieved through feedback loops and cross-talk between the different types of molecules (Fig. \ref{fig:01-02:central-dogma}). Common examples are methylation of DNA by proteins to reduce gene expression \cite{zemachGenomeWideEvolutionaryAnalysis2010}, noncoding RNAs recruiting proteins to repress transcription \cite{wangLongNoncodingRNA2018} or directly repressing translation by preventing ribosome binding \cite{sharmaSmallRNARegulates2007,vecerekControlFurSynthesis2007}.
 
 \begin{figure}[htb]
+    \centering
     \includegraphics[width=0.8\textwidth]{Parts/Part01/gfx/central_dogma_regulation.pdf}
     \caption[Central dogma of molecular biology.]{Central dogma of molecular biology. Products and reactions from the central dogma are shown in green, with grey arrows showing some of the regulatory interactions between the different biomolecules.}
     \label{fig:01-02:central-dogma}
