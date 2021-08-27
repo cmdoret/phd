@@ -15,6 +15,7 @@ The structure of the latex files is as follows:
 
 ```
 .
+├── assets/       	   # External PDF files to append to the thesis.
 ├── FrontBackMatter/       # Files related to front page, glossary etc.
 ├── my-thesis.tex          # Master .tex file for the thesis which gets compilated.
 ├── Parts/		   # Largest unit of separation (Intro, results, discussion, ...)
