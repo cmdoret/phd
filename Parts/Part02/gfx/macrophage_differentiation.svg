@@ -16,7 +16,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="macrophage_differentiation.svg">
+   sodipodi:docname="macrophage_differentiation.svg"
+   inkscape:export-filename="/home/cmatthey/Repos/phd/Parts/Part02/gfx/macrophage_differentiation.png"
+   inkscape:export-xdpi="150"
+   inkscape:export-ydpi="150">
   <defs
      id="defs2">
     <marker
@@ -184,9 +187,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.65503709"
-     inkscape:cx="-260.59175"
-     inkscape:cy="575.54353"
+     inkscape:zoom="0.7503501"
+     inkscape:cx="558.42687"
+     inkscape:cy="753.98413"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
