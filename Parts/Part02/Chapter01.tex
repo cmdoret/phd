@@ -174,6 +174,8 @@ The required thresholds $T_c$, $T_p$ and $T_d$ are provided with default values 
 
 Pareidolia can either return the pattern intensity changes $D_f$ at a set of predetermined $(i, j)$ positions provided as input, or perform \textit{de-novo} detection of differential loops on the Hi-C map. For \textit{de-novo} detection, pareidolia applies Chromosight's implementation of the connected component labelling algorithm for sparse matrices, described in \ref{sec:02-01:chromo-met}. This operation isolates contiguous foci of non-zero differential changes in $D_f$ and retrieve the local absolute maximum in each focus. The list of coordinates along with their respective differential intensity score is returned.
 
+The inner steps of Pareidolia are further detailed with visual representation of the intermediate matrices and filters on experimental data in Appendix \ref{ch:04-C:pareidolia}.
+
 \subsection{Results on experimental data}
 
 To showcase the performances of Pareidolia, we used it to measure loop changes upon depletion of CTCF in murine cells using published data \cite{noraTargetedDegradationCTCF2017}. CTCF acts as a roadblock for the motor protein cohesin which travels along the chromatin fiber. Cohesin accumulates at CTCF binding sites, forming stable chromatin loops between pairs of CTCF binding sites.
@@ -189,3 +191,9 @@ With default parameters, pareidolia identifies a total of 2997 disappearing diff
     \caption[Pareidolia results on CTCF degradation experiments.]{Pareidolia results on CTCF degradation experiments from \cite{noraTargetedDegradationCTCF2017}: \textbf{a:} Distribution of chromatin loop change and size upon CTCF depletion as detected by pareidolia. \textbf{b:} Zoom on a region of the Hi-C map from mouse chromosome 1. Disappearing loops detected by pareidolia are highlighted in blue. For visualization purpose, replicates were merged in Hi-C matrices shown. Processed data retrieved from \url{https://data.4dnucleome.org}, accessions 4DNES87HWQAX and 4DNES7UKQHOX.}
     \label{fig:02-01:pareidolia-experimental}
 \end{figure}
+
+\subsection{Perspectives and potential improvements}
+
+Pareidolia is one of the few available computational methods for differential Hi-C analysis which leverages replicates \cite{lunDiffHicBioconductorPackage2015,stansfieldMultiHiCcompareJointNormalization2019,sahinHiCDCEnablesSystematic2021,djekidelFINDDifFerentialChromatin2018,cookMeasuringSignificantChanges2020}. While these methods focus on differential contact enrichment, often through fitting a Poisson or negative binomial model, Pareidolia detects change relative to a predefined pattern. Pareidolia is computationally efficient due to the use of sparse matrices throughout the program and maximal use of vectorized operations. Although a formal benchmark has yet to be performed, its core functionality relies on Chromosight which has been thoroughly evaluated, and gives promising results on empirical tests.
+
+Although Pareidolia currently supports only two condition, the code was written with the intent of being extended to multiple conditions or timepoints. This would most likely involve a different change metric than background accumulation, such as a regression, but could be implemented with relatively few changes to the code.

@@ -1206,6 +1206,21 @@
   file = {/home/cmatthey/Zotero/storage/B3FDXKWN/Conesa et al. - 2016 - A survey of best practices for RNA-seq data analys.pdf}
 }
 
+@article{cookMeasuringSignificantChanges2020,
+  title = {Measuring Significant Changes in Chromatin Conformation with {{ACCOST}}},
+  author = {Cook, Kate B and Hristov, Borislav H and Le Roch, Karine G and Vert, Jean Philippe and Noble, William Stafford},
+  year = {2020},
+  month = mar,
+  journal = {Nucleic Acids Research},
+  volume = {48},
+  number = {5},
+  pages = {2303--2311},
+  issn = {0305-1048},
+  doi = {10.1093/nar/gkaa069},
+  abstract = {Chromatin conformation assays such as Hi-C cannot directly measure differences in 3D architecture between cell types or cell states. For this purpose, two or more Hi-C experiments must be carried out, but direct comparison of the resulting Hi-C matrices is confounded by several features of Hi-C data. Most notably, the genomic distance effect, whereby contacts between pairs of genomic loci that are proximal along the chromosome exhibit many more Hi-C contacts that distal pairs of loci, dominates every Hi-C matrix. Furthermore, the form that this distance effect takes often varies between different Hi-C experiments, even between replicate experiments. Thus, a statistical confidence measure designed to identify differential Hi-C contacts must accurately account for the genomic distance effect or risk being misled by large-scale but artifactual differences. ACCOST (Altered Chromatin COnformation STatistics) accomplishes this goal by extending the statistical model employed by DEseq, re-purposing the `size factors,' which were originally developed to account for differences in read depth between samples, to instead model the genomic distance effect. We show via analysis of simulated and real data that ACCOST provides unbiased statistical confidence estimates that compare favorably with competing methods such as diffHiC, FIND~and HiCcompare. ACCOST is freely available with an Apache license at https://bitbucket.org/noblelab/accost.},
+  file = {/home/cmatthey/Zotero/storage/9I5KHTHZ/Cook et al. - 2020 - Measuring significant changes in chromatin conform.pdf;/home/cmatthey/Zotero/storage/N6P66H79/5730377.html}
+}
+
 @article{cookSexDeterminationHymenoptera1993,
   title = {Sex Determination in the {{Hymenoptera}}: A Review of Models and Evidence},
   shorttitle = {Sex Determination in the {{Hymenoptera}}},
@@ -1591,6 +1606,25 @@
   doi = {10.1038/nature11082},
   language = {en},
   file = {/home/cmatthey/Zotero/storage/DFS85KIS/Dixon et al. - 2012 - Topological domains in mammalian genomes identifie.pdf}
+}
+
+@article{djekidelFINDDifFerentialChromatin2018,
+  title = {{{FIND}}: {{difFerential}} Chromatin {{INteractions Detection}} Using a Spatial {{Poisson}} Process},
+  shorttitle = {{{FIND}}},
+  author = {Djekidel, Mohamed Nadhir and Chen, Yang and Zhang, Michael Q.},
+  year = {2018},
+  month = mar,
+  journal = {Genome Research},
+  volume = {28},
+  number = {3},
+  pages = {412--422},
+  publisher = {{Cold Spring Harbor Lab}},
+  issn = {1088-9051, 1549-5469},
+  doi = {10.1101/gr.212241.116},
+  abstract = {Polymer-based simulations and experimental studies indicate the existence of a spatial dependency between the adjacent DNA fibers involved in the formation of chromatin loops. However, the existing strategies for detecting differential chromatin interactions assume that the interacting segments are spatially independent from the other segments nearby. To resolve this issue, we developed a new computational method, FIND, which considers the local spatial dependency between interacting loci. FIND uses a spatial Poisson process to detect differential chromatin interactions that show a significant difference in their interaction frequency and the interaction frequency of their neighbors. Simulation and biological data analysis show that FIND outperforms the widely used count-based methods and has a better signal-to-noise ratio.},
+  language = {en},
+  pmid = {29440282},
+  file = {/home/cmatthey/Zotero/storage/5QPS7KKK/Djekidel et al. - 2018 - FIND difFerential chromatin INteractions Detectio.pdf;/home/cmatthey/Zotero/storage/KELW47NW/412.html}
 }
 
 @misc{Doi101016,
@@ -4585,7 +4619,7 @@
 @misc{NeuralNetwork2D,
   title = {Neural Network - 2-{{D}} Convolution as a Matrix-Matrix Multiplication},
   journal = {Stack Overflow},
-  howpublished = {https://stackoverflow.com/questions/16798888/2-d-convolution-as-a-matrix-matrix-multiplication},
+  howpublished = {https://stackoverflow.com /q/16798888},
   file = {/home/cmatthey/Zotero/storage/37C55TQT/2-d-convolution-as-a-matrix-matrix-multiplication.html}
 }
 
@@ -5678,6 +5712,25 @@
   language = {en},
   keywords = {Apoptosis,infection,ROS,SopB,TRAF6},
   file = {/home/cmatthey/Zotero/storage/HD8HJXEB/Ruan et al. - 2016 - The Salmonella effector SopB prevents ROS-induced .pdf;/home/cmatthey/Zotero/storage/62BWFR9X/S0006291X16312384.html}
+}
+
+@article{sahinHiCDCEnablesSystematic2021,
+  title = {{{HiC}}-{{DC}}+ Enables Systematic {{3D}} Interaction Calls and Differential Analysis for {{Hi}}-{{C}} and {{HiChIP}}},
+  author = {Sahin, Merve and Wong, Wilfred and Zhan, Yingqian and Van Deynze, Kinsey and Koche, Richard and Leslie, Christina S.},
+  year = {2021},
+  month = jun,
+  journal = {Nature Communications},
+  volume = {12},
+  number = {1},
+  pages = {3366},
+  publisher = {{Nature Publishing Group}},
+  issn = {2041-1723},
+  doi = {10.1038/s41467-021-23749-x},
+  abstract = {Recent genome-wide chromosome conformation capture assays such as Hi-C and HiChIP have vastly expanded the resolution and throughput with which we can study 3D genomic architecture and function. Here, we present HiC-DC+, a software tool for Hi-C/HiChIP interaction calling and differential analysis using an efficient implementation of the HiC-DC statistical framework. HiC-DC+ integrates with popular preprocessing and visualization tools and includes topologically associating domain (TAD) and A/B compartment callers. We found that HiC-DC+ can more accurately identify enhancer-promoter interactions in H3K27ac HiChIP, as validated by CRISPRi-FlowFISH experiments, compared to existing methods. Differential HiC-DC+ analyses of published HiChIP and Hi-C data sets in settings of cellular differentiation and cohesin perturbation systematically and quantitatively recovers biological findings, including enhancer hubs, TAD aggregation, and the relationship between promoter-enhancer loop dynamics and gene expression changes. HiC-DC+ therefore provides a principled statistical analysis tool to empower genome-wide studies of 3D chromatin architecture and function.},
+  copyright = {2021 The Author(s)},
+  language = {en},
+  annotation = {Bandiera\_abtest: a Cc\_license\_type: cc\_by Cg\_type: Nature Research Journals Primary\_atype: Research Subject\_term: Chromosomes;Software;Statistical methods Subject\_term\_id: chromosomes;software;statistical-methods},
+  file = {/home/cmatthey/Zotero/storage/RH3BJPS3/Sahin et al. - 2021 - HiC-DC+ enables systematic 3D interaction calls an.pdf;/home/cmatthey/Zotero/storage/PBL2MUGA/s41467-021-23749-x.html}
 }
 
 @article{sahrLegionellaPneumophilaGenome2017,
