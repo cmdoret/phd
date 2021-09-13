@@ -18,15 +18,11 @@ While these methods work well to determine differences between alleles, they do 
 
 \section{Genomics to probe homeostasis}
 
-When host cells are exposed to or infected by a pathogen, their homeostatic state is disrupted. This disruption is a combination of alterations caused by the pathogen to colonize the host cell and host-triggered immune reactions to improve its survival. These two components can usually be untangled and investigated in infection experiments by using a disabled pathogen. The pathogen will still harbour the antigens triggering host reactions, but will be unable to cause any harms. One can then deduce the pathogen-caused disruptions by comparing the infection results from a standard and disabled pathogen. 
+When host cells are exposed to or infected by a pathogen, their homeostatic state is disrupted. This disruption is a combination of alterations caused by the pathogen to colonize the host cell and host-triggered immune reactions to improve its survival. Multiple levels of regulation are affected upon infection, from signalling to epigenetic modifications \cite{rolandoLegionellaPneumophilaType2014}. Over the years, a vast arsenal of NGS techniques has been developed to characterize and investigate these regulatory states. 
 
-%%% ROMAIN STOPPED HERE %%%
+The most widely used approach consists in gene expression analysis (RNA-seq). The total transcribed RNAs present in a biological sample made of cells (infected or not) can be extracted, and reverse-transcribed into cDNA. That cDNA can be then sequenced and the relative abundance of each gene's transcript determined. This allows to quantify the expression of the whole genome, known as the transcriptome. Typical transcriptome analysis consists in comparing different conditions, to find out which genes undergo perturbations (increase or decrease of expression levels) during infection. 
 
-Multiple levels of regulation are affected upon infection, from signalling to epigenetic modifications \cite{rolandoLegionellaPneumophilaType2014}, and over the years, a vast arsenal of NGS techniques have been developed to read these regulatory states. 
-
-The most frequently used feature is gene expression. The transcribed RNAs present in the sample can be reverse-transcribed into cDNA and sequenced and the relative abundance of each gene's transcript allows to quantify the expression of the whole genome, known as the transcriptome. Transcriptomes can then be compared between different conditions to find out which genes undergo perturbations during infection. 
-
-Many levels of regulation allow to fine tune gene expression in eukaryotes (Fig. \ref{fig:01-02:transcriptional-regulation}). Regulatory elements can be directly encoded by the sequence and trigger the recruitment of protein complexes to adapt gene expression. Epigenetic changes, in the form of chemical modification of histone proteins offer yet another way to regulate gene expression in eukaryotes. The amount of these epigenetic marks can be measured along the genome using another NGS-derived technique known as \acrfull{ChIPseq}. In \acrshort{ChIPseq}, the chromatin sample is crosslinked with formaldehyde to generate covalent bonds between proteins and DNA. The sample is then sonicated to break the DNA into smaller fragments. Beads coated with specific antibodies against a protein of interest (e.g. an epigenetic mark) are then added and the beads are then precipitated to retrieve them. The crosslinked is then reversed and the DNA fragments purified. This allows to retrieve all genomic regions that were bound to the protein of interest. 
+Many levels of regulation allow to fine tune gene expression in eukaryotes (Fig. \ref{fig:01-02:transcriptional-regulation}). Regulatory elements encoded in the sequence, such as enhancers, can trigger or facilitate the recruitment of protein complexes to modulate gene expression \cite{levoPursuitDesignPrinciples2014}. Regulation can also apply at the post-translational level, for example by degrading proteins \cite{brownSREBPPathwayRegulation1997} or applying chemical modifications such as phosphorylation or acetylation to modulate their activity \cite{christensenPosttranslationalProteinAcetylation2019}. Epigenetic changes, in the form of chemical modification of histone proteins offer yet another way to regulate gene expression in eukaryotes. The amount of epigenetic marks can be quantified along the genome using another NGS-derived technique known as \acrfull{ChIPseq}. In \acrshort{ChIPseq}, the chromatin sample is crosslinked with formaldehyde, a fixative molecule that will generate covalent bonds between proteins and DNA. The sample is then sonicated to break the DNA into smaller fragments. Beads coated with antibodies targeted against a protein of interest (e.g. an epigenetic mark) are then used to precipitate and isolate DNA molecules bound to the protein of interest from the pool of total DNA. The crosslink is then reversed and the DNA fragments purified. This allows to retrieve all genomic regions that were bound to the protein of interest. 
 
 \begin{figure}
     \includegraphics[width=\textwidth]{Parts/Part01/gfx/transcriptional_regulation_levels.pdf}
@@ -35,9 +31,25 @@ Many levels of regulation allow to fine tune gene expression in eukaryotes (Fig.
 \end{figure}
 
 
-\section{Capturing chromosome conformation}
+\begin{table}[]
+\begin{tabularx}{\textwidth}{X | X | X | X}
+\hline
+Mark     & Regulatory state             & Type       & Sources \\ \hline
+H3K4Me1  & primed enhancers             & active     & \cite{benevolenskayaHistoneH3K4Demethylases2007}                                  \\
+H3K4Me3  & active promoters             & active     & \cite{liangDistinctLocalizationHistone2004,kochLandscapeHistoneModifications2007} \\
+H3K9Me2  & facultative heterochromatin  & repressive & \cite{poleshkoH3K9me2OrchestratesInheritance2019}                                 \\
+H3K9Me3  & constitutive heterochromatin & repressive & \cite{rosenfeldDeterminationEnrichedHistone2009}                                  \\
+H3K27Me3 & repressed genes              & repressive & \cite{barskiHighResolutionProfilingHistone2007}                                   \\
+H3K27Ac  & active enhancers             & active     & \cite{creyghtonHistoneH3K27acSeparates2010}                                       \\
+H3K36Me3 & transcribed gene bodies      & active     & \cite{kolasinska-zwierzDifferentialChromatinMarking2009}                          \\ \hline
+\end{tabularx}
+\caption{Histone marks}
+\label{tab:histones}
+\end{table}
 
-Although DNA is a linear (or circular) molecule, it can fold back on itself and form three-dimensional structures which have several benefits compared to a linear structure. These benefits include compactness: For example, the human chromosome 1 consists of 250 millions nucleotides each spaced by 0.34nm \cite {langridgeMolecularConfigurationDeoxyribonucleic1960}. If straightened, the chromosome would be 85mm long, but the whole genome fits in a nucleus where the diameter is around 10$\mu m$. Another key feature of genome folding is the regulation of gene expression through higher order structures. Compacting large regions of the genome by spreading of \Gls{heterochromatin} allows to downregulate their activity. Smaller scale structures allow to fine tune gene regulation more locally. For example, \Gls{chromatin} loops can bring enhancers and promoters in close spatial proximity even if they would otherwise be far apart on the linear sequence. Compact chromatin domains also form local neighbourhoods where different loci are in close spatial proximity, while loci in distinct domains are isolated from each other. All these levels of spatial regulation are important to understand the coordination of the gene expression programme with other cellular processes.
+\section{Capturing chromosome conformation}
+%%% ROMAIN STOPPED HERE %%%
+Most eukaryotic chromosomes are made of a linear DNA molecule which is not randomly organized into the nuclear space. Indeed, this long polymer can fold back on itself, resulting in three-dimensional structures which have several useful properties compared to a linear structure. These benefits include compactness: For example, the human chromosome 1 consists of 250 millions nucleotides each spaced by 0.34nm \cite {langridgeMolecularConfigurationDeoxyribonucleic1960}. If straightened, the chromosome would be 85mm long, but the whole genome fits in a nucleus where the diameter is around 10$\mu m$. Another key feature of genome folding is the regulation of gene expression through higher order structures. Compacting large regions of the genome by spreading of \Gls{heterochromatin} allows to downregulate their activity. Smaller scale structures allow to fine tune gene regulation more locally. For example, \Gls{chromatin} loops can bring enhancers and promoters in close spatial proximity even if they would otherwise be far apart on the linear sequence. Compact chromatin domains also form local neighbourhoods where different loci are in close spatial proximity, while loci in distinct domains are isolated from each other. All these levels of spatial regulation are important to understand the coordination of the gene expression programme with other cellular processes.
 
 \subsection{3C technologies}
 
