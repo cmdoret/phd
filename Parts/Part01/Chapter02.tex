@@ -22,7 +22,7 @@ When host cells are exposed to or infected by a pathogen, their homeostatic stat
 
 The most widely used approach consists in gene expression analysis (RNA-seq). The total transcribed RNAs present in a biological sample made of cells (infected or not) can be extracted, and reverse-transcribed into cDNA. That cDNA can be then sequenced and the relative abundance of each gene's transcript determined. This allows to quantify the expression of the whole genome, known as the transcriptome. Typical transcriptome analysis consists in comparing different conditions, to find out which genes undergo perturbations (increase or decrease of expression levels) during infection. 
 
-Many levels of regulation allow to fine tune gene expression in eukaryotes (Fig. \ref{fig:01-02:transcriptional-regulation}). Regulatory elements encoded in the sequence, such as enhancers, can trigger or facilitate the recruitment of protein complexes to modulate gene expression \cite{levoPursuitDesignPrinciples2014}. Regulation can also apply at the post-translational level, for example by degrading proteins \cite{brownSREBPPathwayRegulation1997} or applying chemical modifications such as phosphorylation or acetylation to modulate their activity \cite{christensenPosttranslationalProteinAcetylation2019}. Epigenetic changes, in the form of chemical modification of histone proteins offer yet another way to regulate gene expression in eukaryotes. The amount of epigenetic marks can be quantified along the genome using another NGS-derived technique known as \acrfull{ChIPseq}. In \acrshort{ChIPseq}, the chromatin sample is crosslinked with formaldehyde, a fixative molecule that will generate covalent bonds between proteins and DNA. The sample is then sonicated to break the DNA into smaller fragments. Beads coated with antibodies targeted against a protein of interest (e.g. an epigenetic mark) are then used to precipitate and isolate DNA molecules bound to the protein of interest from the pool of total DNA. The crosslink is then reversed and the DNA fragments purified. This allows to retrieve all genomic regions that were bound to the protein of interest. 
+Many levels of regulation allow to fine tune gene expression in eukaryotes (Fig. \ref{fig:01-02:transcriptional-regulation}). Regulatory elements encoded in the sequence, such as enhancers, can trigger or facilitate the recruitment of protein complexes to modulate gene expression \cite{levoPursuitDesignPrinciples2014}. Regulation can also apply at the post-translational level, for example by degrading proteins \cite{brownSREBPPathwayRegulation1997} or applying chemical modifications such as phosphorylation or acetylation to modulate their activity \cite{christensenPosttranslationalProteinAcetylation2019}. Epigenetic changes, in the form of chemical modification of histone proteins offer yet another way to regulate gene expression in eukaryotes. These chemical modifications are collectively known as the histone code and form a combinatorial set of instructions dictating the regulatory state of DNA sequences. Although the role of many histone modifications is still partially or completely unknown, there are many examples of histone marks affecting gene transcription and chromatin states (Tab. \ref{tab:histones}). The amount of epigenetic marks can be quantified along the genome using another NGS-derived technique known as \acrfull{ChIPseq}. In \acrshort{ChIPseq}, the chromatin sample is crosslinked with formaldehyde, a fixative molecule that will generate covalent bonds between proteins and DNA. The sample is then sonicated to break the DNA into smaller fragments. Beads coated with antibodies targeted against a protein of interest (e.g. an epigenetic mark) are then used to precipitate and isolate DNA molecules bound to the protein of interest from the pool of total DNA. The crosslink is then reversed and the DNA fragments purified. This allows to retrieve all genomic regions that were bound to the protein of interest. 
 
 \begin{figure}
     \includegraphics[width=\textwidth]{Parts/Part01/gfx/transcriptional_regulation_levels.pdf}
@@ -32,18 +32,19 @@ Many levels of regulation allow to fine tune gene expression in eukaryotes (Fig.
 
 
 \begin{table}[]
-\begin{tabularx}{\textwidth}{X | X | X | X}
+\begin{tabularx}{\textwidth}{l | X | l | l}
+\topline
+\headcol Mark     & Regulatory state             & Type          & Sources \\ \midline
+         H3K4Me1  & primed enhancers             & active        & \cite{benevolenskayaHistoneH3K4Demethylases2007}                                  \\
+\rowcol  H3K4Me3  & active promoters             & active        & \cite{liangDistinctLocalizationHistone2004,kochLandscapeHistoneModifications2007} \\
+         H3K9Me2  & facultative heterochromatin  & repressive    & \cite{poleshkoH3K9me2OrchestratesInheritance2019}                                 \\
+\rowcol  H3K9Me3  & constitutive heterochromatin & repressive    & \cite{rosenfeldDeterminationEnrichedHistone2009}                                  \\
+         H3K27Me3 & repressed genes              & repressive    & \cite{barskiHighResolutionProfilingHistone2007}                                   \\
+\rowcol  H3K27Ac  & active enhancers             & active        & \cite{creyghtonHistoneH3K27acSeparates2010}                                       \\
+         H3K36Me3 & transcribed gene bodies      & active        & \cite{kolasinska-zwierzDifferentialChromatinMarking2009}                          \\
 \hline
-Mark     & Regulatory state             & Type       & Sources \\ \hline
-H3K4Me1  & primed enhancers             & active     & \cite{benevolenskayaHistoneH3K4Demethylases2007}                                  \\
-H3K4Me3  & active promoters             & active     & \cite{liangDistinctLocalizationHistone2004,kochLandscapeHistoneModifications2007} \\
-H3K9Me2  & facultative heterochromatin  & repressive & \cite{poleshkoH3K9me2OrchestratesInheritance2019}                                 \\
-H3K9Me3  & constitutive heterochromatin & repressive & \cite{rosenfeldDeterminationEnrichedHistone2009}                                  \\
-H3K27Me3 & repressed genes              & repressive & \cite{barskiHighResolutionProfilingHistone2007}                                   \\
-H3K27Ac  & active enhancers             & active     & \cite{creyghtonHistoneH3K27acSeparates2010}                                       \\
-H3K36Me3 & transcribed gene bodies      & active     & \cite{kolasinska-zwierzDifferentialChromatinMarking2009}                          \\ \hline
 \end{tabularx}
-\caption{Histone marks}
+\caption{Examples of commonly studied histone marks and their impact on transcriptional regulation.}
 \label{tab:histones}
 \end{table}
 

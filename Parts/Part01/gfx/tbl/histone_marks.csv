@@ -1,0 +1,8 @@
+Mark,Regulatory state,Type,Sources
+H3K4Me1,primed enhancers,active,"\cite{benevolenskayaHistoneH3K4Demethylases2007}"
+H3K4Me3,active promoters,active,"\cite{liangDistinctLocalizationHistone2004,kochLandscapeHistoneModifications2007}"
+H3K9Me2,facultative heterochromatin,repressive,"\cite{poleshkoH3K9me2OrchestratesInheritance2019}"
+H3K9Me3,constitutive heterochromatin,repressive,"\cite{rosenfeldDeterminationEnrichedHistone2009}"
+H3K27Me3,repressed genes,repressive,"\cite{barskiHighResolutionProfilingHistone2007}"
+H3K27Ac,active enhancers,active,"\cite{creyghtonHistoneH3K27acSeparates2010}"
+H3K36Me3,transcribed gene bodies,active,"\cite{kolasinska-zwierzDifferentialChromatinMarking2009}"
