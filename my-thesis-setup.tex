@@ -140,7 +140,9 @@
 \usepackage{babel} 						% babel system, adjust the language of the content
 \usepackage{cleanthesis}
 \usepackage{glossaries}						% Allow glossary and acronyms
-\usepackage[amssymb]{SIunits}				% symboles unites SI
+%\usepackage[amssymb]{SIunits}				% symboles unites SI (superseded by siunitx)
+\usepackage{siunitx}
+\usepackage{upgreek,textcomp}               % Non-italic greek characters
 \usepackage{chngcntr}						% Reset Chapter counter for each part
 \usepackage{amsmath}
 %\usepackage[euler]{textgreek}				% For better greek letters in text mode
@@ -169,6 +171,7 @@
 %\usepackage[utf8]{inputenc}
 \usepackage{textgreek}
 %\usepackage{minted}
+
 \usepackage{tikz}
 
 \usetikzlibrary{shapes,positioning,arrows}
