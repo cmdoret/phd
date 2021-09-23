@@ -6,20 +6,20 @@
 
 %----------------------------------------------------------------------------------------
 
-Most genomics methods generate a large amount of information, most of which is not directly relevant for the problem at hand. One of the main challenges emanating from genomics data is to distill this information and extract only the relevant signal.
+Most genomics methods generate a large amount of data. The information contained in these data is not always readily accessible, and in addition most of it is often not directly relevant for the problem at hand. One of the main challenges emanating from genomics data is therefore process the data to extract meaningful information, and then distill this information and extract only the relevant signal.
 
-In the case of Hi-C and other 3D genomics techniques, the resulting signal is a collection of contacts recorded between pairs of genomic regions. These contacts reflect the average genome structure from a population of cells and are subject to various biases.
+In the case of Hi-C and other related derivative genomics techniques, the resulting signal is a collection of contacts recorded between pairs of genomic segments. These contacts reflect the average genome structure from a population of cells. However, in addition to reflecting the average of a population of cells, the data themselves are subject to various biases intrinsic to their generation.
 
-The spatial features and changes of interest are diluted in the population and can be obfuscated by noise. Detecting these changes requires a set of bias correction and signal detection methods which are still in their early developments.
+The specific contacts revealing spatial features and changes of interest are therefore sometimes hard to detect and, importantly, to quantify and validate statistically. They can be faint, reflecting events that occur only in a fraction of the cells in the population, or maskes by experimental noise. This is especially true regarding data generated from species that are not heavily investigated and for which optimization of the protocols was not performed. The quality of the data has indeed strongly improved over the last 10 years, from 40 Mb a bin of a human contact map in 2009 (Lieberman  CHECK), to 1 kb in more recent papers. In yeast, bacteria, or Achaea whose compact genomes would be entirely contained within a bin of the human 2009 map, several years passed before protocols reaching at a decent resolution (e.g. ~ 20 kb bin to start with) were developed. Only recently contact maps of bacteria reached 1kb (Cockram 2021?).  Detecting and quantifying the changes in these contact maps of variable quality therefore requires a set of bias correction and signal detection methods which are still under continuous developments, drawing from innovation in computer science and algorithmic field. 
 
-In this section we review the recent methodological developments that allow to correct the Hi-C signal and present new methods to extract biological features from these datasets. These developments proved necessary to tackle the questions raised in further chapters.
+In this section we review the recent methodological developments that allow to correct the Hi-C signal and present new methods to extract, quantify and assess the relevance of biological features from these datasets. These developments proved necessary to tackle the questions raised in the following chapters.
 
 \section{Streamlined and reproducible Hi-C processing}
 \label{sec:02-01:streamlined-processing}
 % Existing methods: painful to install, non tested (risky), non reproducible
 % hicstuff, hicreppy
 
-Pre-processing of Hi-C data, to convert \acrfull{NGS} reads into chromosomal contact matrices involves several steps that will impact the resulting signal. The sequencing reads themselves can be the result from religation of two distinct loci (Fig. \ref{fig:02-01:chimeric}). These chimeric reads cannot be aligned reliably with generic methods and need to be cut for proper alignment \cite{lajoieHitchhikerGuideHiC2015}. Chimeric reads become more problematic when increasing the read size relative to restriction fragment length.
+Pre-processing of Hi-C data, which consists in converting \acrfull{NGS} reads into chromosomal contact matrices involves several steps that will impact the resulting signal. The sequencing reads themselves can be the result from religation of two distinct loci (Fig. \ref{fig:02-01:chimeric}). These chimeric reads cannot be aligned reliably with generic methods and need to be cut for proper alignment \cite{lajoieHitchhikerGuideHiC2015}. Chimeric reads become more problematic when increasing the read size relative to restriction fragment length.
 
 \begin{figure}[htb]
     \includegraphics[width=0.8\textwidth]{Parts/Part02/gfx/hicstuff/chimeric.pdf}
