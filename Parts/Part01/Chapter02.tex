@@ -108,9 +108,9 @@ Many eukaryotic genomes are segmented into insulating domains containing frequen
     \label{eqn:01-02:insulation-U}
     U(w, s) &= \sum_{i=-w}^{-1}{\sum_{j=0}^{i+1}{M_{k+i,k+j}}} \\
     \label{eqn:01-02:insulation-D}
-    D(w, s) &= \sum_{i=-w+1}^{0}{\sum_{j=1}^{w+i}{M_{k+i,k+j}}} \\
+    D(w, s) &= \sum_{i=1}^{w}{\sum_{j=i+1}^{w+1}{M_{k+i,k+j}}} \\
     \label{eqn:01-02:insulation-B}
-    B(w, s) &= \sum_{i=1}^{w}{\sum_{j=i+1}^{w+1}{M_{k+i,k+j}}} \\
+    B(w, s) &= \sum_{i=-w+1}^{0}{\sum_{j=1}^{w+i}{M_{k+i,k+j}}} \\
     \label{eqn:01-02:insulation-RI}
     RI(w, s) &= \frac{U(w, s) + D(w, s) - B(w, s)}{U(w, s) + D(w, s) + B(w, s)}
 \end{align}
