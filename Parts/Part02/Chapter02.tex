@@ -22,3 +22,32 @@ This prompted us to generate a chromosome-level genome assembly for two strains 
      7,subsection,2,Methods,p5}]
      {Publications/acastellanii_legionella_manuscript.pdf}    
 
+
+\section{Inter-strain sequence divergence}
+
+To put into perspective the divergence between \textit{A. castellanii} strains Neff and C3, here we compare them to 11 other amoeba species whose genomes are available. As described in the previous section, we extracted all predicted coding sequences from each species and used orthofinder (v2.3.3) to constitute groups of orthologous genes among these proteomes.
+
+We built a phylogenetic tree using orthofinder built-in implementation of the STAG (Species Tree inference from All Genes) procedure \cite{emmsSTAGSpeciesTree2018stag}. Briefly, Orthofinder builds a tree for each gene based on multiple sequence alignment, and then uses all gene trees where all species are available to build a species tree. C3 and Neff are highly divergent from the closest available relative, Planoprotostelium fungivorum (Fig. \ref{fig:02-02:acas-comp}a). Both strains exhibit a high (protein) sequence divergence, with about 0.084 amino-acid substitution per site, compared to e.g. 0.061 between \textit{Entamoeba histolytica} and \textit{Entamoeba dispar}. When computing the DNA sequence divergence between the two strains, we observe an average of 6.65\% substitions across aligned blocks (Fig. \ref{fig:02-02:acas-div}). In comparison, computing this same metric between Neff and \textit{Dictyostelium discoideum} yields 11.8\%.
+
+As mentioned earlier, a high number of orthogroups are specific to either \textit{A. castellanii} strains (Fig. \ref{fig:02-02:acas-comp}b), further emphasizing their strong differences. There also seems the ba a few major genomic rearrangements between the two strains, however it is hard to assess whether these are genuine inter-strain differences. These segments could also be the product of misassemblies induced by the collapse of heterozygous structural variants in either strains.
+
+
+
+\begin{figure}[htb]
+    \includegraphics[width=\textwidth]{Parts/Part02/gfx/acas_comparative_genomics.pdf}
+    \caption[Comparative genomics of \textit{A. castellanii}.]{Comparison of \textit{A. castellanii} strains C3 and Neff with other species. \textbf{a:} Phylogenetic tree of \textit{A. castellanii} strains C3 and Neff and 11 other amoeba species built based on all coding sequences. Distances represent substitution per position. \textbf{b:} Comparison of orthogroups content between \textit{A. castellanii} and the 11 other amoeba species used in the tree.}
+    \label{fig:02-02:acas-comp}
+\end{figure}
+
+\begin{figure}[htb]
+    \center
+    \includegraphics[width=0.8\textwidth]{Parts/Part02/gfx/acas_strains_div.pdf}
+    \caption[Sequence divergence between \textit{A. castellanii} strains C3 and Neff.]{Density plot showing the distribution of sequence (gap-excluded) divergence across aligned blocks between \textit{A. castellanii} strains C3 and Neff.}
+    \label{fig:02-02:acas-div}
+\end{figure}
+
+\begin{figure}[htb]
+    \includegraphics[width=\textwidth]{Parts/Part02/gfx/acas_circos.pdf}
+    \caption[Circos plot of \textit{A. castellanii} strains C3 and Neff.]{Circos plot showing homologous blocks for all scaffolds of \textit{A. castellanii} strains C3 and Neff longer than 50kb.}
+    \label{fig:02-02:acas-circos}
+\end{figure}
