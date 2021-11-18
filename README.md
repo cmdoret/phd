@@ -8,10 +8,7 @@ To compile the thesis into a pdf file, simply run `make`.
 
 The precompiled thesis in PDF format is available from the [releases page](https://github.com/cmdoret/phd/releases).
 
-Code and analyses associated with this thesis is available on the following repositories:
-
 The structure of the latex files is as follows:
-
 
 ```
 .
@@ -26,3 +23,17 @@ The structure of the latex files is as follows:
 │  └── PartXX.tex          # Master file for the part, with a short introduction and chapter imports.
 └── Publications/	   # PDF files of publications included in the thesis.
 ```
+
+Code and analyses associated with this thesis' results are available on the following repositories:
+
+* Part II, Chapter 1:
+  + [hicstuff](https://github.com/koszullab/hicstuff)
+  + [chromosight](https://github.com/koszullab/chromosight)
+  + [pareidolia](https://github.com/koszullab/pareidolia)
+* Part II, Chapter 2:
+  + [A. castellanii assembly](https://github.com/cmdoret/Acastellanii_hybrid_assembly)
+  + [A. castellanii annotation](https://github.com/cmdoret/Acastellanii_genome_annotation)
+  + [A. castellanii genome analysis](https://github.com/cmdoret/Acastellanii_genome_analysis)
+  + [A. castellanii-legionella infection analysis](https://github.com/cmdoret/Acastellanii_legionella_infection)
+* Part II, Chapter 2:
+  + [Mouse macrophage-Salmonella infection analysis](https://github.com/cmdoret/mouse_salmonella_infection)
