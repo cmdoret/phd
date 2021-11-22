@@ -6,7 +6,7 @@ This is based on the cleanthesis style, hosted at: https://github.com/derric/cle
 
 To compile the thesis into a pdf file, simply run `make`.
 
-The precompiled thesis in PDF format is available from the [releases page](https://github.com/cmdoret/phd/releases). Each tagged commit (realease) was automatically compiled into a pdf using github workflows.
+The precompiled thesis in PDF format is available from the [releases page](https://github.com/cmdoret/phd/releases). Each tagged commit (release) was automatically compiled into a pdf using github workflows.
 
 The structure of the latex files is as follows:
 
