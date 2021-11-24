@@ -35,5 +35,5 @@ Code and analyses associated with this thesis' results are available on the foll
   + [A. castellanii annotation](https://github.com/cmdoret/Acastellanii_genome_annotation)
   + [A. castellanii genome analysis](https://github.com/cmdoret/Acastellanii_genome_analysis)
   + [A. castellanii-legionella infection analysis](https://github.com/cmdoret/Acastellanii_legionella_infection)
-* Part II, Chapter 2:
+* Part II, Chapter 3:
   + [Mouse macrophage-Salmonella infection analysis](https://github.com/cmdoret/mouse_salmonella_infection)
