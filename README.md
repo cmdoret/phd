@@ -37,3 +37,10 @@ Code and analyses associated with this thesis' results are available on the foll
   + [A. castellanii-legionella infection analysis](https://github.com/cmdoret/Acastellanii_legionella_infection)
 * Part II, Chapter 3:
   + [Mouse macrophage-Salmonella infection analysis](https://github.com/cmdoret/mouse_salmonella_infection)
+
+## Citation
+
+The final version of this thesis was officially published on the french open archive repository HAL: https://hal.archives-ouvertes.fr/tel-03679023
+It can be cited as follows:
+
+> Cyril Matthey-Doret. Exploring the genomic complexity of bacterial infection in 3D. Genomics [q-bio.GN]. Sorbonne Université, 2021. English. ⟨NNT : 2021SORUS346⟩. ⟨tel-03679023⟩
